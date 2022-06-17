@@ -1,0 +1,341 @@
+{
+  "cadeia_nome":"Magazine Luiza",
+  "cadeia_id":"ZC3WKFSWYDD",
+  "lojas":[
+  {
+    "codcarga":907733,
+    "consumo":290.3227417958,
+    "endereco":"Voluntarios Da Franca, 1465 - Centro, Franca - SP, 14400490"
+  },
+  {
+    "codcarga":908832,
+    "consumo":163.6232589084,
+    "endereco":"Afonso Pena, 262 - Centro, Uberlândia - MG, 38400128"
+  },
+  {
+    "codcarga":908559,
+    "consumo":70.303207228,
+    "endereco":"Floriano Peixoto, 1406 - Centro, Uberlândia - MG, 38400100"
+  },
+  {
+    "codcarga":907734,
+    "consumo":390.8785547238,
+    "endereco":"General Glicerio, 2746 - Centro, São José do Rio Preto - SP, 15015400"
+  },
+  {
+    "codcarga":907731,
+    "consumo":110.197999102,
+    "endereco":"Duque De Caxias, 126 - Centro, Araçatuba - SP, 16010410"
+  },
+  {
+    "codcarga":907717,
+    "consumo":1379.9666587521,
+    "endereco":"Francisco Glicerio, 1057 - Centro, Campinas - SP, 13012000"
+  },
+  {
+    "codcarga":910835,
+    "consumo":33.8687394868,
+    "endereco":"Brasil, 6400 - Centro, Cascavel - PR, 85806000"
+  },
+  {
+    "codcarga":910496,
+    "consumo":646.4196988759,
+    "endereco":"Brasil, 891 - Centro, Foz do Iguaçu - PR, 85851000"
+  },
+  {
+    "codcarga":907703,
+    "consumo":5.8235146319,
+    "endereco":"Do Osmio, 699 - Jardim Mollon, Santa Bárbara d'Oeste - SP, 13456625"
+  },
+  {
+    "codcarga":909613,
+    "consumo":4.8968091122,
+    "endereco":"Santa Beatriz Da Silva, 1501 - Sao Benedito, Uberaba - MG, 38020433"
+  },
+  {
+    "codcarga":908162,
+    "consumo":240.0774086147,
+    "endereco":"Francisco Jales, 2336 - Centro, Jales - SP, 15700002"
+  },
+  {
+    "codcarga":925474,
+    "consumo":204.6923812655,
+    "endereco":"Sete Se Setembro, 295 - Centro, Aquidauana - MS, 79200000"
+  },
+  {
+    "codcarga":908716,
+    "consumo":240.3190245029,
+    "endereco":"Coronel Antonio Dos Anjos, 119 - Centro, Montes Claros - MG, 39400050"
+  },
+  {
+    "codcarga":940089,
+    "consumo":42.1576405906,
+    "endereco":"Presidente Nereu Ramos, 306 - Centro, Lages - SC, 88502170"
+  },
+  {
+    "codcarga":908175,
+    "consumo":150.9637305403,
+    "endereco":"Getulio Dorneles Vargas, 760 - Centro, Chapecó - SC, 89801002"
+  },
+  {
+    "codcarga":908048,
+    "consumo":158.8495253433,
+    "endereco":"Dr. Alvares Soares, 111 - Centro, Sorocaba - SP, 18010190"
+  },
+  {
+    "codcarga":929200,
+    "consumo":37.1842033399,
+    "endereco":"20 De Agosto, 1449 - Setor Central, Catalão - GO, 75701010"
+  },
+  {
+    "codcarga":909755,
+    "consumo":1.7750053472,
+    "endereco":"Cristiano Machado, 4000 - Sao Paulo, Belo Horizonte - MG, 31910064"
+  },
+  {
+    "codcarga":905506,
+    "consumo":505.7287297559,
+    "endereco":"Amazonas Da Silva, 27 - Vila Guilherme, São Paulo - SP, 2051000"
+  },
+  {
+    "codcarga":933367,
+    "consumo":84.0786720299,
+    "endereco":"Do Campo Limpo, 4438 - Pirajussara, São Paulo - SP, 5787000"
+  },
+  {
+    "codcarga":907707,
+    "consumo":204.3222484248,
+    "endereco":"Avenida Doutor Ismael Alonso Y. Alonso 3250, 3250 - Sao Jose, Franca - SP, 14403900"
+  },
+  {
+    "codcarga":907845,
+    "consumo":837.1913824346,
+    "endereco":"Nossa Senhora Da Lapa, 112 - Lapa, São Paulo - SP, 5074050"
+  },
+  {
+    "codcarga":907732,
+    "consumo":72.3735424643,
+    "endereco":"Conselheiro Antonio Prado, 1400 - Pedro Cavalini, Barretos - SP, 14784200"
+  },
+  {
+    "codcarga":925484,
+    "consumo":100.3591697074,
+    "endereco":"Dom Aquino, 1259 - Centro, Campo Grande - MS, 79002185"
+  },
+  {
+    "codcarga":933317,
+    "consumo":280.6160443911,
+    "endereco":"Presidente Vargas, 07 - Centro, Santo Amaro - BA, 44200000"
+  },
+  {
+    "codcarga":907759,
+    "consumo":67.2829139465,
+    "endereco":"Da Concordia, 188 - Sao Jose, Recife - PE, 50020055"
+  },
+  {
+    "codcarga":924975,
+    "consumo":181.7233951895,
+    "endereco":"Da Palma, 319 - Santo Antonio, Recife - PE, 50010460"
+  },
+  {
+    "codcarga":925014,
+    "consumo":86.0602692264,
+    "endereco":"Padre Lemos, 197 - Casa Amarela, Recife - PE, 52070200"
+  },
+  {
+    "codcarga":907682,
+    "consumo":572.4461241625,
+    "endereco":"Theodoro Victorelli, 150 - Helena, Londrina - PR, 86027750"
+  },
+  {
+    "codcarga":907895,
+    "consumo":10.5450016995,
+    "endereco":"Deputado Laercio Corte, 4500 - Graminha, Limeira - SP, 13482902"
+  },
+  {
+    "codcarga":933351,
+    "consumo":22.2357121109,
+    "endereco":"Anatazio Soares, 3380 - Maria Eugenia, Sorocaba - SP, 18074385"
+  },
+  {
+    "codcarga":940120,
+    "consumo":48.7515054224,
+    "endereco":"Puglisi, 260 - Centro, Guarujá - SP, 11410000"
+  },
+  {
+    "codcarga":908147,
+    "consumo":79.6271286811,
+    "endereco":"Geronimo Caetano Garcia, 526 - Centro, Francisco Morato - SP, 7901000"
+  },
+  {
+    "codcarga":940232,
+    "consumo":198.2108566068,
+    "endereco":"Doutor Ismael Alonso Y. Alonso 3250, 3250 - Sao Jose, Franca - SP, 14403900"
+  },
+  {
+    "codcarga":939975,
+    "consumo":183.2511652394,
+    "endereco":"Lourenco Prado, 398 - Centro, Jaú - SP, 17201000"
+  },
+  {
+    "codcarga":938834,
+    "consumo":119.0934047011,
+    "endereco":"Ten Nicolau Maffei, 412 - Centro, Presidente Prudente - SP, 19010010"
+  },
+  {
+    "codcarga":937099,
+    "consumo":170.0590671183,
+    "endereco":"Barao Do Rio Branco, 1046 - Centro, Campo Grande - MS, 79002170"
+  },
+  {
+    "codcarga":937412,
+    "consumo":55.6976126467,
+    "endereco":"11 De Junho, 951 - Centro, Indaiatuba - SP, 13347460"
+  },
+  {
+    "codcarga":935783,
+    "consumo":20.1366401146,
+    "endereco":"Barao De Maua, 122 - Vila Fausto Neves Morelli, Mauá - SP, 9310000"
+  },
+  {
+    "codcarga":937451,
+    "consumo":133.9462274628,
+    "endereco":"Coronel Jose Lopes, 63 - Centro, São Vicente - SP, 11310020"
+  },
+  {
+    "codcarga":937667,
+    "consumo":47.3593000411,
+    "endereco":"Tuiuti, 2230 - Tatuape, São Paulo - SP, 3081003"
+  },
+  {
+    "codcarga":941709,
+    "consumo":393.6896810457,
+    "endereco":"Marcondes Salgado, S\/N - Vila Cardia, Bauru - SP, 17013231"
+  },
+  {
+    "codcarga":935565,
+    "consumo":13.3349161306,
+    "endereco":"Santos Dumont, 3626 - Centro, Lauro de Freitas - BA, 42700130"
+  },
+  {
+    "codcarga":935478,
+    "consumo":567.104275037,
+    "endereco":"Imperatriz Tereza Cristina, 201 - Boa Vista, Recife - PE, 50060120"
+  },
+  {
+    "codcarga":907704,
+    "consumo":125.6186238472,
+    "endereco":"Barao Do Rio Branco, 1273 - Centro, Sertãozinho - SP, 14160570"
+  },
+  {
+    "codcarga":907716,
+    "consumo":1031.2393194646,
+    "endereco":"Tuffi Rassi, 50 - Jardim Do Trevo, Ribeirão Preto - SP, 14093170"
+  },
+  {
+    "codcarga":907715,
+    "consumo":168.7897058225,
+    "endereco":"Saldanha Marinho, 475 - Centro, Ribeirão Preto - SP, 14010060"
+  },
+  {
+    "codcarga":907712,
+    "consumo":34.8481053584,
+    "endereco":"Presidente Kennedy, 1500 - Ribeirania, Ribeirão Preto - SP, 14096350"
+  },
+  {
+    "codcarga":908176,
+    "consumo":123.2514532297,
+    "endereco":"15 De Novembro, 667 - Centro, Blumenau - SC, 89010001"
+  },
+  {
+    "codcarga":922823,
+    "consumo":96.3288779448,
+    "endereco":"Joao Gomes Maranhao, 82 - Centro, Guarabira - PB, 58200000"
+  },
+  {
+    "codcarga":907711,
+    "consumo":9.9542353688,
+    "endereco":"Luiz Eduardo Toledo Prado, 900 - Vila Golf, Ribeirão Preto - SP, 14027250"
+  },
+  {
+    "codcarga":939931,
+    "consumo":291.9416497032,
+    "endereco":"Doutor Moreira Da Rocha, 412 - Centro, Crateús - CE, 63700001"
+  },
+  {
+    "codcarga":942893,
+    "consumo":235.5806305112,
+    "endereco":"30 De Julho, 111 - Centro, Americana - SP, 13473291"
+  },
+  {
+    "codcarga":943001,
+    "consumo":70.1647074914,
+    "endereco":"Presidente Vargas, 1000 - Centro, Rio Verde - GO, 75901040"
+  },
+  {
+    "codcarga":942208,
+    "consumo":348.680275828,
+    "endereco":"Barao De Lucena, 197 - Centro, Jaboatão dos Guararapes - PE, 54110000"
+  },
+  {
+    "codcarga":944561,
+    "consumo":125.5973978534,
+    "endereco":"Antonio Joaquim Moura Andrade, 1540 - Centro, Nova Andradina - MS, 79750000"
+  },
+  {
+    "codcarga":915846,
+    "consumo":139.0503974072,
+    "endereco":"13 De Maio, 127 - Centro, João Pessoa - PB, 58013070"
+  },
+  {
+    "codcarga":943575,
+    "consumo":723.2828965989,
+    "endereco":"Br 324, 6800 - Distrito Industrial, Candeias - BA, 43813400"
+  },
+  {
+    "codcarga":945089,
+    "consumo":613.1071173718,
+    "endereco":"Aristides Lobo, 54 - Centro, João Pessoa - PB, 58010320"
+  },
+  {
+    "codcarga":945090,
+    "consumo":112.2061532207,
+    "endereco":"Almirante Barroso, 71 - Centro, João Pessoa - PB, 58013120"
+  },
+  {
+    "codcarga":944402,
+    "consumo":274.3489621275,
+    "endereco":"Sao Carlos, 1428 - Centro, São Carlos - SP, 13560011"
+  },
+  {
+    "codcarga":944465,
+    "consumo":31.3553102981,
+    "endereco":"Do Acampamento, 166 - Centro, Santa Maria - RS, 97050000"
+  },
+  {
+    "codcarga":943002,
+    "consumo":232.1080148563,
+    "endereco":"Coronel Bento De Godoy, S\/N - Centro, Caldas Novas - GO, 75680001"
+  },
+  {
+    "codcarga":943874,
+    "consumo":1939.3026157952,
+    "endereco":"Guilherme Campos 500, 500 - Jardim Santa Genebra, Campinas - SP, 13087901"
+  },
+  {
+    "codcarga":947637,
+    "consumo":192.8917945433,
+    "endereco":"Nove De Julho, 531 - Centro, Araraquara - SP, 14801295"
+  },
+  {
+    "codcarga":943013,
+    "consumo":210.0035842702,
+    "endereco":"Republica, 37 - Centro, Itumbiara - GO, 75503260"
+  },
+  {
+    "codcarga":910494,
+    "consumo":230.0341937008,
+    "endereco":"Pedro Adams Filho, 5367 - Centro, Novo Hamburgo - RS, 93510025"
+  }
+  ]
+}
