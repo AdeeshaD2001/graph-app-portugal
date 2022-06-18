@@ -31,13 +31,12 @@ class UserController{ // define a classe controladora dos usuarios.
     async create(req,res){ // médoto de criar um novo usuario
         try{
             const {email, password, name, tel} = req.body; // email e senha passados do frontend
-            const acctype = "Free";
             const user = await User.findOne({email}); // busca se o email já está cadastrado
             if (user){// em caso de email já cadastrado no banco de dados, retonar o erro.
                 return res.status(422).json({message:`User ${email} already exists.`});
             }// em caso de novo email ->
             const encryptedPassword = await createPassorwdHash(password)  // pega o password digitado pelo usuario no frontend e criptografa.
-            const newUser = await User.create({ email, password: encryptedPassword, name, tel, isSubscribed, subscriptionType, subscriptionDuration, chosenChains, visitorId}); // cria novo usuario com nome e senha(criptografada - hash)
+            const newUser = await User.create({ email, password: encryptedPassword, name, tel}); // cria novo usuario com nome e senha(criptografada - hash)
             return res.status(201).json(newUser); // retorna confirmação de exito com os dados de novo usuario em formato json para o banco de dados.
         }catch(err){  // caso não sejá possivel retorna o  erro!
             console.error(err);

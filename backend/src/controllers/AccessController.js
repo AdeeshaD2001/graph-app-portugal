@@ -24,9 +24,15 @@ class AccessController{ // define the class that will control the Access
                             bestloja = loja;
                         }
                     })
+<<<<<<< HEAD
                     user.chosenChains[0].lojas = bestloja; //Then making sure that only the best store is available under the selected chain
                     console.log(user.chosenChains[0])
                     return res.status(200).json(user.chosenChains); //sending the chosenChain with only the best store for the front-end as the response
+=======
+                    user.chosenChains[0].lojas = bestloja;
+                    console.log(user.chosenChains[0]);
+                    return res.status(200).json(user.chosenChains);
+>>>>>>> a414b00f367e588927dd3929091332147dea0e8e
                 }
                 if(user.subscriptionType == "level_two" || "level_three" ||"level_four" ||"level_five" ||"premium_level"){ //Checking if the user's subscription is any thing other than Basic Level
                     return res.status(200).json(user.chosenChains); //sending the chosenChain with all the stores available for that chain for the front-end as the response
