@@ -34,11 +34,13 @@ const userSchema = new mongoose.Schema(
             default:null  // When user signup subscriptionType is null
         }, 
         subscriptionDuration:{ //End date of the subscription
-            type:String 
+            type:String,
+            default:null 
         },
         chosenChains:[{  //This array object populated from the Graphs Collection
             type:mongoose.Schema.Types.ObjectId,
-            ref: 'Graph'
+            ref: 'Graph',
+            default:null
         }],
         visitorId:{  //This is used to finite the number of views for basic_level subscibers
             type:String,
