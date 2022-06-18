@@ -25,7 +25,7 @@ class AccessController{ // define the class that will control the Access
                         }
                     })
                     user.chosenChains[0].lojas = bestloja;
-                    console.log(user.chosenChains[0])
+                    console.log(user.chosenChains[0]);
                     return res.status(200).json(user.chosenChains);
                 }
                 if(user.subscriptionType == "level_two" || "level_three" ||"level_four" ||"level_five" ||"premium_level"){
