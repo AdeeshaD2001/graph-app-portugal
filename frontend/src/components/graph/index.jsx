@@ -1,23 +1,20 @@
-import { VictoryScatter, VictoryChart } from 'victory'
-
+import { VictoryScatter, VictoryChart } from "victory";
 
 export default function AreaChart({ maxDomain, width, height, data }) {
-    if(data){
-        const dataChart = data;
-               
-        return (
-            <div>
-                <VictoryChart >
+  if (data) {
+    const dataChart = data;
 
-                <VictoryScatter />
-                    </VictoryChart>    
-            </div>
-            
-        )
-    }   
+    return (
+      <div>
+        <VictoryChart>
+          <VictoryScatter />
+        </VictoryChart>
+      </div>
+    );
+  }
   return (
     <div>
       <span>Não há lojas cadastradas.</span>
     </div>
-  )
+  );
 }
