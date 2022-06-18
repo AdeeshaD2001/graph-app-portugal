@@ -9,7 +9,7 @@ class AccessController{ // define the class that will control the Access
             .populate('chosenChains') //relating Graph collection and User collection
             .then((user)=>{
                 if(!user){ //making sure user exist in the database and if not send and error
-                    return res.status(500).json({ error: 'User does not exist' }); 
+                    return res.status(500).json({ error: 'User does not exist. Please enter a valid user' }); 
                 }
                 if(!user.isSubscribed){
                     return res.status(500).json({ error: 'User is not subscribed' });
