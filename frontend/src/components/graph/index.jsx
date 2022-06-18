@@ -8,9 +8,8 @@ export default function AreaChart({ maxDomain, width, height, data }) {
         return (
             <div>
                 <VictoryChart >
-
-                <VictoryScatter />
-                    </VictoryChart>    
+                  <VictoryScatter />
+                </VictoryChart>    
             </div>
             
         )
