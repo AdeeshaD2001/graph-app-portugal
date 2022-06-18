@@ -30,7 +30,7 @@ class UserController{ // define a classe controladora dos usuarios.
     }
     async create(req,res){ // médoto de criar um novo usuario
         try{
-            const {email, password, name, tel, isSubscribed, subscriptionType, subscriptionDuration, chosenChains, visitorId} = req.body; // email e senha passados do frontend
+            const {email, password, name, tel} = req.body; // email e senha passados do frontend
             const acctype = "Free";
             const user = await User.findOne({email}); // busca se o email já está cadastrado
             if (user){// em caso de email já cadastrado no banco de dados, retonar o erro.
@@ -48,13 +48,13 @@ class UserController{ // define a classe controladora dos usuarios.
     async update(req,res){ // método para atualizar dados de usuario
         try{
             const { id } = req.params; // pega os paramentros (id) de ususario do frontend
-            const {email, password, chosenChains} = req.body; // pega os novos email e senha do frontend
+            const {email, password} = req.body; // pega os novos email e senha do frontend
             const user = await User.findById(id); // encontra o usuario a ser alterado pelo id
             if (!user){ // caso não encontre retorna o erro 404 não existe
                 return res.status(404).json();
             }
             const encryptedPassword = await createPassorwdHash(password) // encripta o novo password que o usuario selecionou
-            await user.updateOne({email, password: encryptedPassword, chosenChains}); // atualiza os dados do usuario (email e password) no banco de dados
+            await user.updateOne({email, password: encryptedPassword}); // atualiza os dados do usuario (email e password) no banco de dados
             return res.status(200).json(); // retorna o estatus de exito.
             
         }catch(err){// em caso de erro retorna a msg.
