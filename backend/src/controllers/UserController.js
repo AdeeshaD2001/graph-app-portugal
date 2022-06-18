@@ -31,7 +31,6 @@ class UserController{ // define a classe controladora dos usuarios.
     async create(req,res){ // médoto de criar um novo usuario
         try{
             const {email, password, name, tel} = req.body; // email e senha passados do frontend
-            const acctype = "Free";
             const user = await User.findOne({email}); // busca se o email já está cadastrado
             if (user){// em caso de email já cadastrado no banco de dados, retonar o erro.
                 return res.status(422).json({message:`User ${email} already exists.`});
