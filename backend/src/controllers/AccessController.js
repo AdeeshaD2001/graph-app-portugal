@@ -28,6 +28,12 @@ class AccessController{ // define the class that will control the Access
                     console.log(user.chosenChains[0])
                     return res.status(200).json(user.chosenChains);
                 }
+                if(user.subscriptionType == "level_two" || "level_three" ||"level_four" ||"level_five" ||"premium_level"){
+                    return res.status(200).json(user.chosenChains);
+                }
+                else{
+                    return res.status(500).json({ error: 'Internal server error.' });
+                }
             });
         }catch(err){ 
             console.error(err); 
