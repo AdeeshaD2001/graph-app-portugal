@@ -6,7 +6,10 @@ import Graph from "../models/Graph";
 class GraphsController{ // define a classe que ira controlar os graficos
     async index(req,res){ // método async de listagem dos elementos dentro do controlador
         try{
-            const graphs = await Graph.find(); // caso seja encontrado, aloca os graficos que esse usuario pode acessar.
+            let query = Graph.find(); // caso seja encontrado, aloca os graficos que esse usuario pode acessar.
+            query = query.select('cadeia_nome cadeia_id');
+            const graphs = await query;
+
             return res.json(graphs); // retorna os graficos.
         }catch(err){ // caso não sejá possivel retornar nada, mostra o erro abaixo.
             console.error(err); 
