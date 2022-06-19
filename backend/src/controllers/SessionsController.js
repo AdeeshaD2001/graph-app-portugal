@@ -15,11 +15,12 @@ class SessionController { // inicia a classe de controle de sessão
         if (!checkPasswor(user,password)){ // faz a chechagem de autenticidade do password usando o bcrypt caso não seja valido retorna o erro
             return res.status(404).json({ error: "User/password invalid." })
         }
-        const { id } = user; // armazena o id do usuario
+        const { id, isSubscribed } = user; // armazena o id do usuario
         return res.json({ //retorna o json com informações do usuario e token
             user:{
                 id,
-                email
+                email,
+                isSubscribed
             },
             token: jwt.sign({ id }, authConfig.secret, { //cria o token autenticando com a chave unica do servidor.
                 expiresIn: authConfig.expiresIn,

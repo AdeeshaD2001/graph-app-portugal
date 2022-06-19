@@ -20,7 +20,13 @@ export const AuthProvider = ({children}) => {
         const response = await createSession(email,password);
         localStorage.setItem('user', JSON.stringify(response.data.user));
         setUser(response.data.user);
-        navigate('/graph');
+        console.log(user);
+        if (!user.isSubscribed) {
+            
+            navigate('/checkout');
+        }else{
+            navigate('/graph');
+        }
     }
      
     const logout = () => {

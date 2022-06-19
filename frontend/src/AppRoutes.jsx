@@ -7,6 +7,7 @@ import HomePage from './pages/Home';
 import LoginPage from './pages/LoginPage';
 import GraphPage from './pages/GraphPage';
 import SignupPage from './pages/SignupPage';
+import CheckoutPage from './pages/CheckoutPage';
 import { AuthProvider, AuthContext } from './contexts/auth';
 
 const AppRoutes = () => {
@@ -28,6 +29,7 @@ const AppRoutes = () => {
                     <Route exact path='/login' element={<LoginPage />} />
                     <Route exact path='/graph' element={<GraphPage />} />
                     <Route exact path='/signup' element={<SignupPage />} />
+                    <Route exact path='/checkout' element={<CheckoutPage />} />
                     <Route exact path='/checkout/:cartCode' element={<HomePage />} />
                 </Routes>
             </AuthProvider>  
