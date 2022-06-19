@@ -13,6 +13,10 @@ export const createUser = async (email, password, name, tel) =>{
     return api.post('/users', {email, password, name, tel})
 }
 
+export const getAllGraphs = async () => {
+    return api.get('/graphs');
+}
+
 export const getData = async(userId, query) => {
     let url = `/users/${userId}/graphs`
     if (query !== '') {

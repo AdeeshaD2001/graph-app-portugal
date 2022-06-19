@@ -1,11 +1,26 @@
 import React, {useState} from 'react';
 import { useEffect } from 'react';
 import { AuthContext } from '../../contexts/auth';
+import { getAllGraphs } from '../../services/api';
 
 const CheckoutPage = () => {
     const [user, setUser] = useState(null);
+    let allChains = [];
     const chosenChains = []
     let level = '';
+
+    const getChains = async () => {
+        return await getAllGraphs();
+    }
+
+    const generateChainSelect = (chains) => {
+        console.log(chains);
+        let options = `<option value="''"></option>`;
+        chains.forEach(chain => {
+            options += `<option value="${chain.cadeia_nome}">${chain.cadeia_nome}</option>`
+        });
+        document.querySelector('#chain-select').innerHTML = options;
+    }
 
     useEffect(() => {
         const userJSON = localStorage.getItem('user');
@@ -13,7 +28,10 @@ const CheckoutPage = () => {
 
         setUser(user);
         console.log(user);
-        const chains = [{cadeia_nome: 'Amazon',cadeia_id:'65t436te5fdhfuel'}, {cadeia_nome: 'Walmart',cadeia_id:'65t436dhdh653khfuel'}]
+        getChains().then(res => {
+            generateChainSelect(res.data);
+        });        
+         
     },[]);
 
     const handleSubTypeSelect = () => {
@@ -47,14 +65,7 @@ const CheckoutPage = () => {
             </div>
             <div className="chosen-chains">
                 <label htmlFor="chain-select"></label>
-                <select name="chosen-chain" id="chain-select" onChange={handleChainSelect}>
-                    <option value="''"></option>
-                    <option value="Amazon">Amazon</option>
-                    <option value="Walmart">Walmart</option>
-                    <option value="BestBuy">BestBuy</option>
-                    <option value="Keels">Keels</option>
-                    <option value="Arpico">Arpico</option>
-                </select>
+                <select name="chosen-chain" id="chain-select" onChange={handleChainSelect}></select>
             </div>
             <div className="submit-container">
                 <button type="button" onClick={handleSubmit}>Submit</button>
