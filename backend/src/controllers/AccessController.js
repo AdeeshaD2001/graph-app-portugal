@@ -28,7 +28,7 @@ class AccessController{ // define the class that will control the Access
                     console.log(user.chosenChains[0])
                     return res.status(200).json(user.chosenChains); //sending the chosenChain with only the best store for the front-end as the response
                 }
-                if(user.subscriptionType == "level_two" || "level_three" ||"level_four" ||"level_five" ||"premium_level"){ //Checking if the user's subscription is any thing other than Basic Level
+                else if(user.subscriptionType == "level_two" || "level_three" ||"level_four" ||"level_five" ||"premium_level"){ //Checking if the user's subscription is any thing other than Basic Level
                     return res.status(200).json(user.chosenChains); //sending the chosenChain with all the stores available for that chain for the front-end as the response
                 }
                 else{
@@ -37,6 +37,31 @@ class AccessController{ // define the class that will control the Access
             });
         }catch(err){ //Handing internal errors if there is any
             console.error(err); 
+            return res.status(500).json({ error: 'Internal server error.' });
+        }    
+    }
+    async update(req,res){ // updating the user based upon the subscription status
+        try{
+            const { user_id } = req.params; // Extracting user_id from the url
+            const {subscriptionType, chosenChains} = req.body; // Assigning user subscriptionType and chosenChains details
+            const isSubscribed = true; //Assigning user subscription status
+            const visitorId = null; //Assigning user subscription status
+            var subscriptionDuration = '';
+            if(subscriptionType == 'basic_level'|| 'level_two'|| 'level_four'){ //Setting the subscription End Date by an increment of a month
+                subscriptionDuration = '19/6/2022'
+            }
+            if(subscriptionType == 'level_three'|| 'level_five'|| 'premium_level'){ //Setting the subscription End Date by an increment of a year
+                subscriptionDuration = '19/6/2022'
+            }
+            const user = await User.findById(user_id); // Finding the user with user_id
+            if (!user){ // Handling the error if the user doesn't exist
+                return res.status(404).json();
+            }
+            const nuser = await user.updateOne({isSubscribed, subscriptionType, subscriptionDuration, chosenChains, visitorId}); // Updating all the user subscription details
+            return res.status(200).json(nuser); // Returning the status upon succesfull
+            
+        }catch(err){// Handling possible internal errors
+            console.error(err);
             return res.status(500).json({ error: 'Internal server error.' });
         }    
     }
