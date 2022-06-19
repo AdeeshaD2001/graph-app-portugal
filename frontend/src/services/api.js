@@ -17,6 +17,10 @@ export const getAllGraphs = async () => {
     return api.get('/graphs');
 }
 
+export const updateSubscription = async (userId, subscriptionType, chosenChains) => {
+    return api.put(`/users/${userId}/subscription`, {subscriptionType, chosenChains});
+}
+
 export const getData = async(userId, query) => {
     let url = `/users/${userId}/graphs`
     if (query !== '') {
