@@ -94,7 +94,7 @@ const CheckoutPage = () => {
     console.log(user.id);
     console.log(level);
     console.log(chosenChains);
-    updateSubscription(user.id, level, chosenChains)
+    updateSubscription(user.id, level, chosenChains);
   };
 
   return (
