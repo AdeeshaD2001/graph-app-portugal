@@ -44,21 +44,21 @@ class AccessController{ // define the class that will control the Access
         try{
             const { user_id } = req.params; // Extracting user_id from the url
             const {subscriptionType, chosenChains} = req.body; // Assigning user subscriptionType and chosenChains details
-            const isSubscribed = true; //Assigning user subscription status
-            var subscriptionDuration = '';
+            const isSubscribed = true; //Assigning user subscription statu
+
+            let subscriptionDuration = null;
+            let today = new Date(Date.now())
             if(subscriptionType == 'basic_level'|| 'level_two'|| 'level_four'){ //Setting the subscription End Date by an increment of a month
-                let today = new Date(Date.now());
-                var subscriptionDate = new Date(today.setMonth(today.getMonth()+1));
-                subscriptionDuration = subscriptionDate.toLocaleDateString();
+                
+                subscriptionDuration = new Date(today.setMonth(today.getMonth()+1))
             }
-            if(subscriptionType == 'level_three'|| 'level_five'|| 'premium_level'){ //Setting the subscription End Date by an increment of a year
-                let today = new Date(Date.now());
-                var subscriptionDate = new Date(today.setFullYear(today.getFullYear()+1));
-                subscriptionDuration = subscriptionDate.toLocaleDateString();
+            else if(subscriptionType == 'level_three'|| 'level_five'|| 'premium_level'){ //Setting the subscription End Date by an increment of a year
+                subscriptionDuration = new Date(today.setFullYear(today.getFullYear()+1))
+
             }
             const user = await User.findById(user_id); // Finding the user with user_id
             if (!user){ // Handling the error if the user doesn't exist
-                return res.status(404).json();
+                return res.status(404).json({ error: 'User not found'});
             }
             const nuser = await user.updateOne({isSubscribed, subscriptionType, subscriptionDuration, chosenChains}); // Updating all the user subscription details
             User.findById(user._id)
