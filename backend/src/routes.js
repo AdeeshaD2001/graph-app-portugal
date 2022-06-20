@@ -33,5 +33,6 @@ routes.delete('/users/:id', UserController.delete);
 routes.get('/graphs', GraphsController.index);
 routes.post('/graphs', GraphsController.create);
 routes.get('/users/:user_id/graphs', AccessController.index);
+routes.put('/users/:user_id/subscription', AccessController.update);
 // routes.delete('/users/:user_id/graphs', GraphsController.delete);
 export default routes;
