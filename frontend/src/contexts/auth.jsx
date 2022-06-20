@@ -19,9 +19,9 @@ export const AuthProvider = ({children}) => {
     const login = async (email, password) => {
         const response = await createSession(email,password);
         localStorage.setItem('user', JSON.stringify(response.data.user));
-        setUser(response.data.user);
-        console.log(user);
-        if (!user.isSubscribed) {
+        const current_user = response.data.user;
+        console.log(current_user);
+        if (!current_user.isSubscribed) {
             
             navigate('/checkout');
         }else{
