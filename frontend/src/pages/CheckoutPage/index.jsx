@@ -93,7 +93,7 @@ const CheckoutPage = () => {
           chosenChains.push(obj._id) 
       }
       })
-     
+      
     });
     console.log(user.id);
     console.log(level);

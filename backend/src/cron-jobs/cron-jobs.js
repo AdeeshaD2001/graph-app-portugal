@@ -8,12 +8,26 @@ const cronTest = function () {
     });
 }
 
+const validateSubscription = async function(){
+    try{
+        let users = await  User.find({isSubscribed: true});
+        users.forEach(async function(user) {
+            console.log(Date.now() - user.subscriptionDuration.getTime());
+            if (Date.now() - user.subscriptionDuration.getTime() > 0) {
+                console.log(`${user.name} subscription expired.`);
+                const nuser = await User.findByIdAndUpdate(user._id, {isSubscribed: false}, {new: true});
+            }
+        });
+    }catch(err){
+
+    }
+}
 
 const subscriptionAutomation = function () {
     
     cron.schedule('0 0 * * *', function() {
-        console.log('Running a task every day  00:00AM');
-        
+        console.log('Running a task at 00:00 AM every day.');
+        validateSubscription();
     });
 }
 
