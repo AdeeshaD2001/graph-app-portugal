@@ -1,6 +1,6 @@
 //modelo (schema) de como sera armazenado os dados dos usuarios no banco de dados. (em desenvolvimento)
 import mongoose from "mongoose";
-import { string } from "yup";
+import { date, string } from "yup";
 import Graph from "./Graph";
 
 const userSchema = new mongoose.Schema(

@@ -44,7 +44,7 @@ class AccessController{ // define the class that will control the Access
         try{
             const { user_id } = req.params; // Extracting user_id from the url
             const {subscriptionType, chosenChains} = req.body; // Assigning user subscriptionType and chosenChains details
-            const isSubscribed = true; //Assigning user subscription status
+            const isSubscribed = true; //Assigning user subscription statu
             const visitorId = null; //Assigning user subscription status
             let subscriptionDuration = null;
             let today = new Date(Date.now())
@@ -54,13 +54,20 @@ class AccessController{ // define the class that will control the Access
             }
             else if(subscriptionType == 'level_three'|| 'level_five'|| 'premium_level'){ //Setting the subscription End Date by an increment of a year
                 subscriptionDuration = new Date(today.setFullYear(today.getFullYear()+1))
+
             }
             const user = await User.findById(user_id); // Finding the user with user_id
             if (!user){ // Handling the error if the user doesn't exist
                 return res.status(404).json({ error: 'User not found'});
             }
-            const nuser = await user.updateOne({isSubscribed, subscriptionType, subscriptionDuration, chosenChains, visitorId}); // Updating all the user subscription details
-            return res.status(200).json(nuser); // Returning the status upon succesfull
+            const nuser = await user.updateOne({isSubscribed, subscriptionType, subscriptionDuration, chosenChains}); // Updating all the user subscription details
+            User.findById(user._id)
+            .populate('chosenChains')
+            .then((muser) => {
+                res.statusCode = 200;
+                res.setHeader('Content-Type', 'application/json');
+                res.json(muser); 
+            }) 
             
         }catch(err){// Handling possible internal errors
             console.error(err);
