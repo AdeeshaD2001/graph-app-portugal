@@ -43,11 +43,16 @@ const CheckoutPage = () => {
     level = document.querySelector("#sub-type-select").value;
     console.log(level);
     let allChains = JSON.parse(localStorage.getItem("allChains"));
+    while(chainNames.length > 0) {
+      chainNames.pop();
+    }
     if (level === "premium_level") {
       allChains.forEach((chain) => {
         chainNames.push(chain.cadeia_nome);
       });
       document.querySelector("#chain-select").style.display = "none";
+    }else{
+      document.querySelector("#chain-select").style.display = "block";
     }
   };
 
