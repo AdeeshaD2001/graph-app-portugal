@@ -34,7 +34,7 @@ const userSchema = new mongoose.Schema(
             default:'Free'  // When user signup subscriptionType is Free.
         }, 
         subscriptionDuration:{ //End date of the subscription
-            type:String,
+            type:Date,
             default:null 
         },
         chosenChains:[{  //This array object populated from the Graphs Collection
