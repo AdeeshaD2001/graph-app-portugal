@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { AuthContext } from "../../contexts/auth";
 import { getAllGraphs, updateSubscription } from "../../services/api";
 
 const CheckoutPage = () => {
@@ -54,7 +53,7 @@ const CheckoutPage = () => {
 
   const handleChainSelect = () => {
     
-    let allChains = JSON.parse(localStorage.getItem("allChains"));
+
     if (
       level === "basic_level" ||
       level === "level_two" ||
