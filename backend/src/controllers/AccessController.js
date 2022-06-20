@@ -45,7 +45,7 @@ class AccessController{ // define the class that will control the Access
             const { user_id } = req.params; // Extracting user_id from the url
             const {subscriptionType, chosenChains} = req.body; // Assigning user subscriptionType and chosenChains details
             const isSubscribed = true; //Assigning user subscription statu
-            const visitorId = null; //Assigning user subscription status
+
             let subscriptionDuration = null;
             let today = new Date(Date.now())
             if(subscriptionType == 'basic_level'|| 'level_two'|| 'level_four'){ //Setting the subscription End Date by an increment of a month

@@ -15,7 +15,7 @@ const validateSubscription = async function(){
             console.log(Date.now() - user.subscriptionDuration.getTime());
             if (Date.now() - user.subscriptionDuration.getTime() > 0) {
                 console.log(`${user.name} subscription expired.`);
-                const nuser = await User.findByIdAndUpdate(user._id, {isSubscribed: false}, {new: true});
+                const nuser = await User.findByIdAndUpdate(user._id, {isSubscribed: false, subscriptionType:null, subscriptionDuration: null, chosenChains:null, visitorId:null}, {new: true});
                 console.log(nuser);
             }
         });
