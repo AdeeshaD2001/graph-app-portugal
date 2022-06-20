@@ -18,7 +18,8 @@ export const getAllGraphs = async () => {
 }
 
 export const updateSubscription = async (user_id, subscriptionType, chosenChains) => {
-    return api.put(`/users/${user_id}/subscription`, {subscriptionType, chosenChains});
+   const res = await api.put(`/users/${user_id}/subscription`, {subscriptionType, chosenChains});
+   return res.data;
 }
 
 export const getData = async(userId, query) => {

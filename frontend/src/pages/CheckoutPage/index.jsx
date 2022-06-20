@@ -6,6 +6,7 @@ const CheckoutPage = () => {
   const [user, setUser] = useState(null);
   const chainNames = [];
   let level = "";
+  const [Response, setResponse] = useState(null);
 
   const getChains = async () => {
     let res = await getAllGraphs();
@@ -93,9 +94,10 @@ const CheckoutPage = () => {
     console.log(user.id);
     console.log(level);
     console.log(chosenChains);
-    updateSubscription(user.id, level, chosenChains);
-  };
-
+    updateSubscription(user.id, level, chosenChains)
+    .then(response => { console.log('subscribedUser', response); alert('You have been subscribed!\n'+JSON.stringify(response)); })
+    .catch(error =>  { console.log('subscribedUser', error.message); alert('Subscription failed\nError: '+error.message); });
+};
   return (
     <div className="checkout-container">
       <h1>Checkout</h1>
@@ -128,8 +130,11 @@ const CheckoutPage = () => {
           Submit
         </button>
       </div>
+      <div className="submit-container">
+        <p>
+        </p>
+      </div>
     </div>
   );
-};
-
+  };
 export default CheckoutPage;
