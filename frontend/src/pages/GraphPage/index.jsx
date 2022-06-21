@@ -19,7 +19,7 @@ const GraphPage = () => {
         let current_user = JSON.parse(localStorage.getItem('user'));
         console.log(current_user);
         getData(current_user.id, query).then(response => {
-            console.log(response);
+            console.log(response.data.chosenChains);
         });
     }
     
@@ -51,7 +51,7 @@ const GraphPage = () => {
         
         // (async () => await dataChart())();
         dataChart().then(id =>{
-            console.log(id);
+            console.log('Graphs Has been fetched');
         });        
     },[]);
     
