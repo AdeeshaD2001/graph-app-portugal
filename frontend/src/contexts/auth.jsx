@@ -7,22 +7,24 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({children}) => {
     const navigate = useNavigate()
-    const [user, setUser] = useState(null);
+    // const [user, setUser] = useState(null);
+    let user = null;
     const [loading, setLoading] = useState(true);
     useEffect(()=>{
-        const user = localStorage.getItem('user');
-        if(user){
-            setUser(JSON.parse(user));
-        }
         setLoading(false);
-    },[])
+    },[]);
+
+    const setUser= function (){
+        user = JSON.parse(localStorage.getItem('user'));
+    }
+
     const login = async (email, password) => {
         const response = await createSession(email,password);
         localStorage.setItem('user', JSON.stringify(response.data.user));
+        setUser();
         const current_user = response.data.user;
         console.log(current_user);
         if (!current_user.isSubscribed) {
-            
             navigate('/checkout');
         }else{
             navigate('/graph');
