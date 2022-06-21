@@ -22,10 +22,15 @@ export const updateSubscription = async (user_id, subscriptionType, chosenChains
    return res.data;
 }
 
-export const getData = async(userId, query) => {
-    let url = `/users/${userId}/graphs`
+export const updateVisitorId = async (user_id, visitorId) => {
+    const res = await api.put(`/users/${user_id}/visitors`, {visitorId});
+    return res.data;
+}
+
+export const getData = async(user_id, query='') => {
+    let url = `/users/${user_id}/graphs`
     if (query !== '') {
-        url +=`?q=${query}`
-    }// http://localhost:5000/users/ID/gaphs/?q=xxxx
+        url +=`?name=${query}`
+    }// http://localhost:3001/users/:id/graphs/?name=xxxx
     return api.get(url);
 }
