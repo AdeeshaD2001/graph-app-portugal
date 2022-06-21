@@ -3,10 +3,8 @@ import { useEffect } from "react";
 import { getAllGraphs, updateSubscription } from "../../services/api";
 
 const CheckoutPage = () => {
-  
   const chainNames = [];
   let level = "";
-  
 
   const getChains = async () => {
     let res = await getAllGraphs();
@@ -26,8 +24,6 @@ const CheckoutPage = () => {
     const userJSON = localStorage.getItem("user");
     const user = JSON.parse(userJSON);
     const allChains = [];
-
-    
     console.log(user);
 
     getChains().then((chains) => {
