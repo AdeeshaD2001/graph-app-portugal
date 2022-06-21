@@ -3,10 +3,10 @@ import { useEffect } from "react";
 import { getAllGraphs, updateSubscription } from "../../services/api";
 
 const CheckoutPage = () => {
-  const [user, setUser] = useState(null);
+  
   const chainNames = [];
   let level = "";
-  const [Response, setResponse] = useState(null);
+  
 
   const getChains = async () => {
     let res = await getAllGraphs();
@@ -27,7 +27,7 @@ const CheckoutPage = () => {
     const user = JSON.parse(userJSON);
     const allChains = [];
 
-    setUser(user);
+    
     console.log(user);
 
     getChains().then((chains) => {
