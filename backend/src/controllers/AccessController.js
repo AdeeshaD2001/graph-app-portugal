@@ -72,13 +72,27 @@ class AccessController {
 
             if (req.query.name) {
               const searchQuery = { cadeia_nome: req.query.name };
-              Graph.find(searchQuery).then((graphs) => {
-                let resdata = {
+              
+              // Graph.find(searchQuery).then((graphs) => {
+              //   let resdata = {
+              //     subscriptionType: user.subscriptionType,
+              //     chosenChains: graphs,
+              //   };
+              //   return res.status(200).json(resdata); //sending the chosenChain with all the stores available for that chain for the front-end as the response
+              // });
+
+              user.chosenChains.forEach((chain)=>{
+                if(chain.cadeia_nome == req.query.name){
+                  let chainarr = [];
+                  chainarr.push(chain);  
+                  let resdata = {
                   subscriptionType: user.subscriptionType,
-                  chosenChains: graphs,
+                  chosenChains: chainarr,
                 };
-                return res.status(200).json(resdata); //sending the chosenChain with all the stores available for that chain for the front-end as the response
-              });
+                return res.status(200).json(resdata);
+                }
+              })
+              
             } else {
               let resdata = {
                 subscriptionType: user.subscriptionType,
