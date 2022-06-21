@@ -10,10 +10,6 @@ export const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     useEffect(()=>{
-        const user = localStorage.getItem('user');
-        if(user){
-            setUser(JSON.parse(user));
-        }
         setLoading(false);
     },[])
     const login = async (email, password) => {
@@ -22,7 +18,6 @@ export const AuthProvider = ({children}) => {
         setUser(response.data.user);
         console.log(user);
         if (!user.isSubscribed) {
-            
             navigate('/checkout');
         }else{
             navigate('/graph');
