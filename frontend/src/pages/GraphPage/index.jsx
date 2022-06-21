@@ -50,8 +50,8 @@ const GraphPage = () => {
     useEffect(()=>{
         
         // (async () => await dataChart())();
-        dataChart().then(id =>{ // call the function dataChart() to initiate the process.
-            console.log(id);
+        dataChart().then(id =>{
+            console.log('Graphs Has been fetched');
         });        
     },[]);
     

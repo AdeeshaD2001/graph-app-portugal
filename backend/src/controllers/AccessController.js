@@ -27,16 +27,16 @@ class AccessController {
           if (user.subscriptionType == "basic_level") {
             //Checking if the user's subscription is Basic Level
             if (user.visitorId) {
-              //Checking if the maximum view count is exceeded and if not send and error
+              //Checking if the maximum view count is exceeded and if that is so update the User's Document
               user
-                .updateOne({
+                .updateOne({   //Updating the User's document for non subscribed User
                   isSubscribed: false,
                   subscriptionType: null,
                   subscriptionDuration: null,
                   chosenChains: null,
                   visitorId: null,
                 })
-                .then((nuser) => {
+                .then((nuser) => { //then Handling the callBack
                   return res
                     .status(200)
                     .json({
@@ -55,11 +55,11 @@ class AccessController {
               user.chosenChains[0].lojas = bestloja; //Then making sure that only the best store is available under the selected chain
               console.log(user.chosenChains[0]);
 
-              let resdata = {
+              let resdata = { //Assigning Subscription type and chosenChains
                 subscriptionType: user.subscriptionType,
                 chosenChains: user.chosenChains,
               };
-              return res.status(200).json(resdata); //sending the chosenChain with only the best store for the front-end as the response
+              return res.status(200).json(resdata); //sending the chosenChain with only the best store and subscriptiontype for the front-end as the response
             }
           } else if (
             user.subscriptionType == "level_two" ||
@@ -70,7 +70,7 @@ class AccessController {
           ) {
             //Checking if the user's subscription is any thing other than Basic Level
 
-            if (req.query.name) {
+            if (req.query.name) { 
               const searchQuery = { cadeia_nome: req.query.name };
               
               // Graph.find(searchQuery).then((graphs) => {
@@ -162,15 +162,14 @@ class AccessController {
     //
     try {
       const { user_id } = req.params; // Extracting user_id from the url
-      const { visitorId } = req.body;
-      const user = await User.findByIdAndUpdate(
+      const { visitorId } = req.body; // Assigning visitorId 
+      const user = await User.findByIdAndUpdate( //Updating User's document with vistor Id after the first vist
         user_id,
         { visitorId: visitorId },
         { new: true }
-      ); // Finding
-
+      ); 
       return res.status(200).json(user);
-    } catch (err) {
+    } catch (err) { //Handling errors
       return res.status(500).json({ error: "Internal server error." });
     }
   }
