@@ -15,21 +15,20 @@ class AccessController {
           if (!user) {
             //making sure user exist in the database and if not send and error
             return res
-              .status(500)
+              .status(404)
               .json({
                 error: "User does not exist. Please enter a valid user",
               });
           }
           if (!user.isSubscribed) {
             //making sure user is subscribed and if not send and error
-            return res.status(500).json({ error: "User is not subscribed" });
+            return res.status(404).json({ error: "User is not subscribed" });
           }
           if (user.subscriptionType == "basic_level") {
             //Checking if the user's subscription is Basic Level
             if (user.visitorId) {
               //Checking if the maximum view count is exceeded and if that is so update the User's Document
-              user
-                .updateOne({   //Updating the User's document for non subscribed User
+              user.updateOne({   //Updating the User's document for non subscribed User
                   isSubscribed: false,
                   subscriptionType: null,
                   subscriptionDuration: null,
@@ -72,15 +71,6 @@ class AccessController {
 
             if (req.query.name) { 
               const searchQuery = { cadeia_nome: req.query.name };
-              
-              // Graph.find(searchQuery).then((graphs) => {
-              //   let resdata = {
-              //     subscriptionType: user.subscriptionType,
-              //     chosenChains: graphs,
-              //   };
-              //   return res.status(200).json(resdata); //sending the chosenChain with all the stores available for that chain for the front-end as the response
-              // });
-
               user.chosenChains.forEach((chain)=>{
                 if(chain.cadeia_nome == req.query.name){
                   let chainarr = [];

@@ -19,7 +19,7 @@ const GraphPage = () => {
         let current_user = JSON.parse(localStorage.getItem('user'));// gets the current user from localStorage.
         console.log(current_user);
         getData(current_user.id, query).then(response => {// request the corresponding data for the search query from the server.
-            console.log(response.data);
+            console.log(response.data.chosenChains);
         });
     }
     
