@@ -7,7 +7,7 @@ const GraphSchema = new mongoose.Schema( // instancia GraphSchema na classe Sche
         cadeia_nome: {
             type: String,
             required: true
-        },
+        },  
 
         cadeia_id: {
             type: String,

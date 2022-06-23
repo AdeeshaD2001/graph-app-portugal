@@ -18,23 +18,23 @@ chosenChains = ['Amazon', 'Walmart']
     {
         "_id": "62aebadd1848a9fae585cbde",
         "cadeia_nome": "Amazon",
-        "cadeia_id": "1"
+        "cadeia_id": "1",
     }
     ,
     {
         "_id": "62aebb021848a9fae585cbe6",
         "cadeia_nome": "Walmart",
-        "cadeia_id": "2"
+        "cadeia_id": "2",
     },
     {
         "_id": "62aebb121848a9fae585cbea",
         "cadeia_nome": "BestBuy",
-        "cadeia_id": "3"
+        "cadeia_id": "3",
     },
     {
         "_id": "62aebb201848a9fae585cbee",
         "cadeia_nome": "Keels",
-        "cadeia_id": "4"
+        "cadeia_id": "4",
     },
     {
         "_id": "62aebb371848a9fae585cbf2",
