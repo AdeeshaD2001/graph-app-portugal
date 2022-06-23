@@ -35,6 +35,7 @@ const GraphPage = () => {
             const response = await getData(current_user.id);// gets the data for the curent user from the server. 
             console.log(response);
             setGraphs(response.data.chosenChains);// update the graph variable with chain data from the server.
+            console.log(graphs)
             if (response.data.subscriptionType === 'basic_level') {// for a user with basic level subscription provide a visitorId.
                 const fp = await fpPromise;
                 const result = await fp.get();
@@ -68,4 +69,4 @@ const GraphPage = () => {
         );
 }
  
-export default GraphPage;
+export default {GraphPage};
