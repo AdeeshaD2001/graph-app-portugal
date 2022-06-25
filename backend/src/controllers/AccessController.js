@@ -43,16 +43,16 @@ class AccessController {
                     });
                 });
             } else {
-              var bestloja = user.chosenChains[0].lojas[0]; //Assigning any sort of store as the best lojas for logic initiation purpose
-              user.chosenChains[0].lojas.map((loja) => {
-                //Mapping through the stores
-                if (loja.consumo > bestloja.consumo) {
-                  //Selecting the best store of the chain based on consumo
-                  bestloja = loja;
-                }
-              });
-              user.chosenChains[0].lojas = bestloja; //Then making sure that only the best store is available under the selected chain
-              console.log(user.chosenChains[0]);
+              // var bestloja = user.chosenChains[0].lojas[0]; //Assigning any sort of store as the best lojas for logic initiation purpose
+              // user.chosenChains[0].lojas.map((loja) => {
+              //   //Mapping through the stores
+              //   if (loja.consumo > bestloja.consumo) {
+              //     //Selecting the best store of the chain based on consumo
+              //     bestloja = loja;
+              //   }
+              // });
+              // user.chosenChains[0].lojas = bestloja; //Then making sure that only the best store is available under the selected chain
+              // console.log(user.chosenChains[0]);
 
               let resdata = { //Assigning Subscription type and chosenChains
                 subscriptionType: user.subscriptionType,
@@ -69,27 +69,27 @@ class AccessController {
           ) {
             //Checking if the user's subscription is any thing other than Basic Level
 
-            if (req.query.name) { 
-              const searchQuery = { cadeia_nome: req.query.name };
-              user.chosenChains.forEach((chain)=>{
-                if(chain.cadeia_nome == req.query.name){
-                  let chainarr = [];
-                  chainarr.push(chain);  
-                  let resdata = {
-                  subscriptionType: user.subscriptionType,
-                  chosenChains: chainarr,
-                };
-                return res.status(200).json(resdata);
-                }
-              })
+            // if (req.query.name) { 
+            //   const searchQuery = { cadeia_nome: req.query.name };
+            //   user.chosenChains.forEach((chain)=>{
+            //     if(chain.cadeia_nome == req.query.name){
+            //       let chainarr = [];
+            //       chainarr.push(chain);  
+            //       let resdata = {
+            //       subscriptionType: user.subscriptionType,
+            //       chosenChains: chainarr,
+            //     };
+            //     return res.status(200).json(resdata);
+            //     }
+            //   })
               
-            } else {
+            // } 
               let resdata = {
                 subscriptionType: user.subscriptionType,
                 chosenChains: user.chosenChains,
               };
               return res.status(200).json(resdata); //sending the chosenChain with all the stores available for that chain for the front-end as the response
-            }
+            
           } else {
             return res.status(500).json({ error: "Internal server error." }); //Handing internal errors if there is any
           }
