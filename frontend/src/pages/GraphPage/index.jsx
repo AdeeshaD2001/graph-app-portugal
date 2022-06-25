@@ -12,6 +12,7 @@ const GraphPage = () => {
   let graphs = [];
   let selectedChain = "";
   let selectedGraph = null;
+  const [subscriptionType,setSubscriptionType] = useState(null);
   const [data, setData] = useState(null);
   const [max_x, setMax_x] = useState(null);
   const [max_y, setMax_y] = useState(null);
@@ -106,6 +107,9 @@ const GraphPage = () => {
         "graphs",
         JSON.stringify(response.data.chosenChains)
       );
+      const settingcSubscriptionType = () => {
+        setSubscriptionType(response.data.subscriptionType);
+      };
       //setGraphs(response.data.chosenChains);// update the graph variable with chain data from the server.
       if (response.data.subscriptionType === "basic_level") {
         // for a user with basic level subscription provide a visitorId.
@@ -148,7 +152,7 @@ const GraphPage = () => {
         </button>
       </div>
       {/* <Search onSearch={handleSearch}/> */}
-      <AreaChart max_x = {max_x} max_y = {max_y} consumoAverage = {consumoAverage} data={data} />
+      <AreaChart max_x = {max_x} max_y = {max_y} consumoAverage = {consumoAverage} data={data} subscriptionType={subscriptionType} />
     </div>
   );
 };
