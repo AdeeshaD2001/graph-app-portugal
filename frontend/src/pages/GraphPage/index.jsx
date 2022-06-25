@@ -12,7 +12,11 @@ const GraphPage = () => {
   let graphs = [];
   let selectedChain = "";
   let selectedGraph = null;
-  let data = null;
+  const [subscriptionType,setSubscriptionType] = useState(null);
+  const [data, setData] = useState(null);
+  const [max_x, setMax_x] = useState(null);
+  const [max_y, setMax_y] = useState(null);
+  const [consumoAverage, setconsumoAverage] = useState(0);
   const handleLogout = () => {
     logout();
   };
@@ -39,10 +43,38 @@ const GraphPage = () => {
 
   const generateChart = () => {
     console.log(selectedChain);
-    data = selectedChain.lojas.map((loja, i)=>{
-        return {x: i+1, y: loja.consumo}
+    const plotData = selectedChain.lojas.map((loja, i)=>{
+        return {x: i+1, y: loja.consumo, label: `consumo = ${loja.consumo}\n codcarga = ${loja.codcarga}\n endereco = ${loja.endereco}` }
     });
-    console.log(data);
+    console.log(plotData);
+    let nMax_y = plotData[0].y;
+    let nMax_x = plotData[plotData.length-1].x;
+    let consumoTotal = 0;
+    selectedChain.lojas.forEach((loja)=>{
+        if(loja.consumo > nMax_y){
+            nMax_y = loja.consumo
+        }
+        consumoTotal = consumoTotal + loja.consumo;
+    });
+    let nConsumoAverage = consumoTotal/nMax_x;
+    console.log(nMax_x);
+    console.log(nMax_y);
+    const settingData = () => {
+      setData(plotData);
+    };
+    const settingMax_x = () => {
+      setMax_x(nMax_x);
+    };
+    const settingMax_y = () => {
+      setMax_y(nMax_y);
+    };
+    const settingcConsumoAverage = () => {
+      setconsumoAverage(nConsumoAverage);
+    };
+    settingData();
+    settingMax_x();
+    settingMax_y();
+    settingcConsumoAverage();
   };
 
   const handleSubmit = () => {
@@ -75,6 +107,10 @@ const GraphPage = () => {
         "graphs",
         JSON.stringify(response.data.chosenChains)
       );
+      const settingcSubscriptionType = () => {
+        setSubscriptionType(response.data.subscriptionType);
+      };
+      settingcSubscriptionType();
       //setGraphs(response.data.chosenChains);// update the graph variable with chain data from the server.
       if (response.data.subscriptionType === "basic_level") {
         // for a user with basic level subscription provide a visitorId.
@@ -117,11 +153,11 @@ const GraphPage = () => {
         </button>
       </div>
       {/* <Search onSearch={handleSearch}/> */}
-      {/* <AreaChart maxDomain={7} width={1520} height={710} data={graphs} /> */}
+      <AreaChart max_x = {max_x} max_y = {max_y} consumoAverage = {consumoAverage} data={data} subscriptionType={subscriptionType} />
     </div>
   );
 };
-
+////  
 
 export default GraphPage;
 
