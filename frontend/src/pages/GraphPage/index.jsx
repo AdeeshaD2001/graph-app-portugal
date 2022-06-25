@@ -110,6 +110,7 @@ const GraphPage = () => {
       const settingcSubscriptionType = () => {
         setSubscriptionType(response.data.subscriptionType);
       };
+      settingcSubscriptionType();
       //setGraphs(response.data.chosenChains);// update the graph variable with chain data from the server.
       if (response.data.subscriptionType === "basic_level") {
         // for a user with basic level subscription provide a visitorId.

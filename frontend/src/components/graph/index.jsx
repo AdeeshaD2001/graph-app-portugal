@@ -51,7 +51,7 @@ export default function AreaChart({ max_x, max_y, consumoAverage, data, subscrip
                           ? "#FF0000"
                           : "#000CFE",
                           fillOpacity: ({ datum }) => datum.y != dataMax_y
-                          ? 0.3
+                          ? 0.2
                           : 1
                       },
                       labels: {
