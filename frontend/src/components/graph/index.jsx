@@ -45,7 +45,7 @@ export default function AreaChart({ max_x, max_y, consumoAverage, data, subscrip
                   domain={{ x: [0, dataMax_x], y: [0, dataMax_y] }}
                 >
                   <VictoryScatter
-                    labelComponent={<VictoryTooltip/>}
+                    labelComponent={<VictoryTooltip />}
                     style={{ 
                       data: { fill: ({ datum }) => datum.y > dataConsumoAverage
                           ? "#FF0000"
@@ -55,12 +55,13 @@ export default function AreaChart({ max_x, max_y, consumoAverage, data, subscrip
                           : 1
                       },
                       labels: {
-                          fillOpacity: ({ datum }) => datum.y != dataMax_y
-                            ? 0.01
-                            : 1 ,
-                          fontSize: ({ datum }) => datum.y != dataMax_y
-                          ? 1
-                          : 10 
+                          // fillOpacity: ({ datum }) => datum.y != dataMax_y
+                          //   ? 0.01
+                          //   : 1 ,
+                          // fontSize: ({ datum }) => datum.y != dataMax_y
+                          // ? 1
+                          // : 10,
+                          
                       }
                      }}
                     size={7}

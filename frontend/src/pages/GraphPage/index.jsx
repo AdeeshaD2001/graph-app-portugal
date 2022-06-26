@@ -12,7 +12,7 @@ const GraphPage = () => {
   let graphs = [];
   let selectedChain = "";
   let selectedGraph = null;
-  const [subscriptionType,setSubscriptionType] = useState(null);
+  const [subscriptionType, setSubscriptionType] = useState(null);
   const [data, setData] = useState(null);
   const [max_x, setMax_x] = useState(null);
   const [max_y, setMax_y] = useState(null);
@@ -43,20 +43,53 @@ const GraphPage = () => {
 
   const generateChart = () => {
     console.log(selectedChain);
-    const plotData = selectedChain.lojas.map((loja, i)=>{
-        return {x: i+1, y: loja.consumo, label: `consumo = ${loja.consumo}\n codcarga = ${loja.codcarga}\n endereco = ${loja.endereco}` }
-    });
-    console.log(plotData);
-    let nMax_y = plotData[0].y;
-    let nMax_x = plotData[plotData.length-1].x;
+    let nMax_y = 0;
     let consumoTotal = 0;
-    selectedChain.lojas.forEach((loja)=>{
-        if(loja.consumo > nMax_y){
-            nMax_y = loja.consumo
+    const calcMax = () => {
+      selectedChain.lojas.forEach((loja) => {
+        if (loja.consumo > nMax_y) {
+          nMax_y = loja.consumo;
         }
         consumoTotal = consumoTotal + loja.consumo;
+      });
+    };
+    calcMax();
+
+    const plotData = selectedChain.lojas.map((loja, i) => {
+      if (subscriptionType === "basic_level") {
+        if (loja.consumo === nMax_y) {
+          return {
+            x: i + 1,
+            y: loja.consumo,
+            label: `consumo = ${loja.consumo}\n codcarga = ${loja.codcarga}\n endereco = ${loja.endereco}`,
+          };
+        } else {
+          return {
+            x: i + 1,
+            y: loja.consumo,
+            label: `Please Upgrade Your Subscription.`,
+          };
+        }
+      } else {
+        return {
+          x: i + 1,
+          y: loja.consumo,
+          label: `consumo = ${loja.consumo}\n codcarga = ${loja.codcarga}\n endereco = ${loja.endereco}`,
+        };
+      }
     });
-    let nConsumoAverage = consumoTotal/nMax_x;
+    console.log(plotData);
+    // let nMax_y = plotData[0].y;
+    let nMax_x = plotData[plotData.length - 1].x;
+    // let consumoTotal = 0;
+    /*
+    selectedChain.lojas.forEach((loja) => {
+      if (loja.consumo > nMax_y) {
+        nMax_y = loja.consumo;
+      }
+      consumoTotal = consumoTotal + loja.consumo;
+    });*/
+    let nConsumoAverage = consumoTotal / nMax_x;
     console.log(nMax_x);
     console.log(nMax_y);
     const settingData = () => {
@@ -87,6 +120,7 @@ const GraphPage = () => {
       }
     });
     generateChart(selectedChain);
+    clearInput();
   };
 
   const clearInput = () => {
@@ -153,11 +187,16 @@ const GraphPage = () => {
         </button>
       </div>
       {/* <Search onSearch={handleSearch}/> */}
-      <AreaChart max_x = {max_x} max_y = {max_y} consumoAverage = {consumoAverage} data={data} subscriptionType={subscriptionType} />
+      <AreaChart
+        max_x={max_x}
+        max_y={max_y}
+        consumoAverage={consumoAverage}
+        data={data}
+        subscriptionType={subscriptionType}
+      />
     </div>
   );
 };
-////  
+////
 
 export default GraphPage;
-
