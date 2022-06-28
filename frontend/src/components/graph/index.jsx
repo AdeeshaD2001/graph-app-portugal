@@ -152,12 +152,10 @@ export default function AreaChart({
                 },
 
                 labels: {
-                  // fillOpacity: ({ datum }) => datum.y != dataMax_y
-                  //   ? 0.01
-                  //   : 1 ,
-                  // fontSize: ({ datum }) => datum.y != dataMax_y
-                  // ? 1
-                  // : 10,
+                  fontSize: 10,
+                  fontFamily:"Anek Latin",
+                  fill: "white",
+                  
                 },
               }}
               size={5}
