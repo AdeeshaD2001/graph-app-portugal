@@ -21,16 +21,6 @@ const GraphPage = () => {
     logout();
   };
 
-  /*
-        const handleSearch = (query) =>{// function to run when a user submits the search.
-        console.log(query);
-        let current_user = JSON.parse(localStorage.getItem('user'));// gets the current user from localStorage.
-        console.log(current_user);
-        getData(current_user.id, query).then(response => {// request the corresponding data for the search query from the server.
-            console.log(response.data.chosenChains);
-        });
-    }*/
-
   const generateChainSelect = async function () {
     graphs = JSON.parse(localStorage.getItem("graphs"));
     console.log(graphs);
@@ -169,24 +159,7 @@ const GraphPage = () => {
 
   return (
     <div id="main">
-      <div className="title">
-        <h1 className="tex">Gráfico</h1>
-        <button onClick={handleLogout}>Sair</button>
-      </div>
-      <div className="chain-select-container">
-        <label htmlFor="chain-select">Choose a Chain:</label>
-        <input list="chain-list" id="chain-select-input" name="selectedChain" />
-        <datalist id="chain-list"></datalist>
-      </div>
-      <div className="submit-container">
-        <button type="button" onClick={clearInput}>
-          Clear
-        </button>
-        <button type="button" onClick={handleSubmit}>
-          Submit
-        </button>
-      </div>
-      {/* <Search onSearch={handleSearch}/> */}
+      <Search handleLogout={handleLogout} handleSubmit={handleSubmit} />
       <AreaChart
         max_x={max_x}
         max_y={max_y}

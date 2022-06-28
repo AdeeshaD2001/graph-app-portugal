@@ -1,0 +1,107 @@
+.search {
+  font-family: 'Anek Latin';
+  
+  .chain-select-container {
+    padding: 25px 0;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    label{
+
+      margin-right: 10px;
+    }
+
+    #chain-select-input {
+      border-radius: 10px;
+      font-size: 20px;
+      padding: 5px 10px;
+      border: 1px solid #2f7fa6;
+    }
+
+    .submit-container {
+    
+      button {
+
+        font-size: 18px;
+     
+        
+        margin-left: 10px;  
+
+        // background: $yellow;
+        border-color: #247ab1;
+        border-width: 0;
+        // border-radius: 25px;
+        font-size: 0.9rem;
+        padding: 5px 20px;
+        
+        font-size: 18px;
+        
+        width: 100px; 
+        border-radius: 5px;
+
+        color: #fff;
+        
+        background-color: #97b73c;
+        background: {
+          image: linear-gradient(45deg, #247ab1 50%, transparent 50%);
+          position: 100%;
+          size: 400%;
+        }
+        transition: background 300ms ease-in-out;
+
+        &:hover {
+          background-position: 0;
+        }
+      }
+    }
+  }
+
+  .title {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+
+    .logo {
+      width: 20%;
+      padding: 0.5rem 3rem;
+    }
+
+    .button-tab {
+      text-align: right;
+      padding-right: 3rem;
+
+      button {
+        // background: $yellow;
+        border-color: #247ab1;
+        border-width: 0;
+        // border-radius: 25px;
+        font-size: 1.1rem;
+        padding: 5px 20px;
+        
+        font-size: 18px;
+        // padding: 5px 5px;
+        width: 100px; 
+        border-radius: 5px;
+
+        color: #fff;
+        
+        background-color: #97b73c;
+        background: {
+          image: linear-gradient(45deg, #247ab1 50%, transparent 50%);
+          position: 100%;
+          size: 400%;
+        }
+        transition: background 300ms ease-in-out;
+
+        &:hover {
+          background-position: 0;
+        }
+      }
+    }
+  }
+}
