@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import {
   VictoryScatter,
   VictoryChart,
@@ -27,6 +28,9 @@ export default function AreaChart({
     if (dataSubscriptionType != "basic_level") {
       return (
         <div className="graph-container">
+          <div className="graph-name-container">
+            <span id="graph-name"></span>
+          </div>
           <svg style={{ height: 0 }}>
             <defs>
               <linearGradient id="myGradient">
@@ -49,7 +53,7 @@ export default function AreaChart({
             <defs>
               <linearGradient id="tooltip-gradient">
                 <stop offset="0%" stopColor="#749e56 " />
-               
+
                 <stop offset="100%" stopColor="#92b33e" />
               </linearGradient>
             </defs>
@@ -62,7 +66,7 @@ export default function AreaChart({
             domain={{ x: [0, dataMax_x], y: [0, dataMax_y] }}
           >
             <VictoryScatter
-               labelComponent={    
+              labelComponent={
                 <VictoryTooltip
                   // center={{ x: 225, y: 30 }}
                   // pointerOrientation="bottom"
@@ -70,11 +74,12 @@ export default function AreaChart({
                   // flyoutHeight={50}
                   // pointerWidth={150}
                   // cornerRadius={0}
-                    flyoutStyle={{
+                  flyoutStyle={{
                     stroke: "white",
-                    fill:  "url(#tooltip-gradient)"
-                }}
-                />}
+                    fill: "url(#tooltip-gradient)",
+                  }}
+                />
+              }
               style={{
                 data: {
                   fill: ({ datum }) =>
@@ -85,7 +90,7 @@ export default function AreaChart({
                 labels: {
                   fill: "white",
                   fontSize: 10,
-                  fontFamily:"Anek Latin"
+                  fontFamily: "Anek Latin",
                 },
               }}
               size={5}
@@ -96,8 +101,8 @@ export default function AreaChart({
       );
     } else {
       return (
-        <div  className="graph-container">
-             <svg style={{ height: 0 }}>
+        <div className="graph-container">
+          <svg style={{ height: 0 }}>
             <defs>
               <linearGradient id="myGradient">
                 <stop offset="0%" stopColor="#ee0979" />
@@ -119,7 +124,7 @@ export default function AreaChart({
             <defs>
               <linearGradient id="tooltip-gradient">
                 <stop offset="0%" stopColor="#749e56 " />
-               
+
                 <stop offset="100%" stopColor="#92b33e" />
               </linearGradient>
             </defs>
@@ -131,37 +136,37 @@ export default function AreaChart({
             domain={{ x: [0, dataMax_x], y: [0, dataMax_y] }}
           >
             <VictoryScatter
-              labelComponent={    
-              <VictoryTooltip
-                // center={{ x: 225, y: 30 }}
-                // pointerOrientation="bottom"
-                // flyoutWidth={150}
-                // flyoutHeight={50}
-                // pointerWidth={150}
-                // cornerRadius={0}
+              labelComponent={
+                <VictoryTooltip
+                  // center={{ x: 225, y: 30 }}
+                  // pointerOrientation="bottom"
+                  // flyoutWidth={150}
+                  // flyoutHeight={50}
+                  // pointerWidth={150}
+                  // cornerRadius={0}
                   flyoutStyle={{
-                  stroke: "none",
-                  fill:  "url(#tooltip-gradient)"
-              }}
-              />}
+                    stroke: "none",
+                    fill: "url(#tooltip-gradient)",
+                  }}
+                />
+              }
               style={{
                 data: {
                   fill: ({ datum }) =>
-                    datum.y > dataConsumoAverage ?  "url(#myGradient)" :  "url(#myGradient2)",
+                    datum.y > dataConsumoAverage
+                      ? "url(#myGradient)"
+                      : "url(#myGradient2)",
                   fillOpacity: ({ datum }) => (datum.y != dataMax_y ? 0.2 : 1),
                 },
 
                 labels: {
                   fontSize: 10,
-                  fontFamily:"Anek Latin",
+                  fontFamily: "Anek Latin",
                   fill: "white",
-                  
                 },
               }}
               size={5}
               data={dataChart}
-              
-
             />
           </VictoryChart>
         </div>
@@ -169,9 +174,14 @@ export default function AreaChart({
     }
   } else {
     return (
-      <div>
-        <span>Não há lojas cadastradas.</span>
-      </div>
+      <Fragment>
+        <div className="graph-name-container">
+          <span id="graph-name"></span>
+        </div>
+        <div className="no-lojas">
+          <span>Não há lojas cadastradas.</span>
+        </div>
+      </Fragment>
     );
   }
 }

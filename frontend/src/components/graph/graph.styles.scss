@@ -4,12 +4,53 @@
   flex-direction: column;
   align-items: center;
   justify-content: center !important  ;
-  
+
   .VictoryContainer {
     width: 70% !important;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     border-radius: 25px;
     padding: 0.5rem 3rem;
-    
+  }
+}
+
+.graph-name-container {
+  span {
+    display: inline-block;
+    font-size: 30px;
+    line-height: 0.9;
+    padding: 20px;
+    font-family: "Syncopate", sans-serif;
+    text-transform: uppercase;
+    background: radial-gradient(
+        circle farthest-corner at center center,
+        #749e56,
+        #84ac54,
+        #92b33e
+      )
+      no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.no-lojas {
+  text-align: center;
+  span {
+    display: inline-block;
+    font-size: 30px;
+    line-height: 0.9;
+    padding: 20px;
+    font-family: "Syncopate", sans-serif;
+    text-transform: uppercase;
+    background: radial-gradient(
+        circle farthest-corner at center center,
+        #749e56,
+        #84ac54,
+        #92b33e
+      )
+      no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }

@@ -100,8 +100,13 @@ const GraphPage = () => {
     settingcConsumoAverage();
   };
 
+  
+
   const handleSubmit = () => {
     selectedChain = document.querySelector("#chain-select-input").value;
+    if (!selectedChain) return;
+    document.querySelector('#graph-name').innerText = `${document.querySelector("#chain-select-input").value}`;
+
     console.log(selectedChain);
     graphs = JSON.parse(localStorage.getItem("graphs"));
     graphs.forEach((chain) => {
@@ -160,6 +165,7 @@ const GraphPage = () => {
   return (
     <div id="main">
       <Search handleLogout={handleLogout} handleSubmit={handleSubmit} />
+      
       <AreaChart
         max_x={max_x}
         max_y={max_y}

@@ -17,7 +17,11 @@ const Search = ({ handleLogout, handleSubmit }) => {
       <div className="chain-select-container">
         <label htmlFor="chain-select">Choose a Chain</label>
         <input list="chain-list" id="chain-select-input" name="selectedChain" />
-        <datalist id="chain-list"></datalist>
+        
+        <div className="datalist-wrapper">
+          <datalist id="chain-list"></datalist>
+        </div>
+        
         <div className="submit-container">
           <button type="button" onClick={handleSubmit}>
             Submit
