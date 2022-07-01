@@ -12,6 +12,7 @@ const GraphPage = () => {
   let graphs = [];
   let selectedChain = "";
   let selectedGraph = null;
+  const [selectedChainName, setSelectedChainName] = useState(null)
   const [subscriptionType, setSubscriptionType] = useState(null);
   const [data, setData] = useState(null);
   const [max_x, setMax_x] = useState(null);
@@ -82,6 +83,9 @@ const GraphPage = () => {
     let nConsumoAverage = consumoTotal / nMax_x;
     console.log(nMax_x);
     console.log(nMax_y);
+    const settingSelectedChainName = () => {
+      setSelectedChainName(selectedChain.cadeia_nome);
+    };
     const settingData = () => {
       setData(plotData);
     };
@@ -94,10 +98,12 @@ const GraphPage = () => {
     const settingcConsumoAverage = () => {
       setconsumoAverage(nConsumoAverage);
     };
+    settingSelectedChainName();
     settingData();
     settingMax_x();
     settingMax_y();
     settingcConsumoAverage();
+    
   };
 
   
@@ -105,7 +111,7 @@ const GraphPage = () => {
   const handleSubmit = () => {
     selectedChain = document.querySelector("#chain-select-input").value;
     if (!selectedChain) return;
-    document.querySelector('#graph-name').innerText = `${document.querySelector("#chain-select-input").value}`;
+    // document.querySelector('#graph-name').innerText = `${document.querySelector("#chain-select-input").value}`;
 
     console.log(selectedChain);
     graphs = JSON.parse(localStorage.getItem("graphs"));
@@ -172,6 +178,7 @@ const GraphPage = () => {
         consumoAverage={consumoAverage}
         data={data}
         subscriptionType={subscriptionType}
+        selectedChainName = {selectedChainName}
       />
     </div>
   );
