@@ -15,7 +15,7 @@ const Search = ({ handleLogout, handleSubmit }) => {
         </div>
       </div>
       <div className="chain-select-container">
-        <label htmlFor="chain-select">Choose a Chain</label>
+        <label htmlFor="chain-select" id="choose-chain-label">Choose a Chain</label>
         <input list="chain-list" id="chain-select-input" name="selectedChain" />
         
         <div className="datalist-wrapper">

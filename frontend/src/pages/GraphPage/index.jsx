@@ -171,7 +171,6 @@ const GraphPage = () => {
   return (
     <div id="main">
       <Search handleLogout={handleLogout} handleSubmit={handleSubmit} />
-      
       <AreaChart
         max_x={max_x}
         max_y={max_y}

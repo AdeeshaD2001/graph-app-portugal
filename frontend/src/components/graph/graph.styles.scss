@@ -4,13 +4,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center !important  ;
+  padding-bottom: 50px;
 
   .VictoryContainer {
     width: 70% !important;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-      rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    box-shadow: rgba(60, 64, 67, 0.7) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.5) 0px 2px 6px 2px;
     border-radius: 25px;
     padding: 0.5rem 3rem;
+    background-color: rgba(255, 255, 255, 0.115);
   }
 }
 
@@ -24,9 +26,9 @@
     text-transform: uppercase;
     background: radial-gradient(
         circle farthest-corner at center center,
-        #749e56,
-        #84ac54,
-        #92b33e
+        #f6f9f3,
+        #d1ddc3,
+        #f0ffc9
       )
       no-repeat;
     -webkit-background-clip: text;
@@ -45,9 +47,9 @@
     text-transform: uppercase;
     background: radial-gradient(
         circle farthest-corner at center center,
-        #749e56,
-        #84ac54,
-        #92b33e
+        #f6f9f3,
+        #d1ddc3,
+        #f0ffc9
       )
       no-repeat;
     -webkit-background-clip: text;

@@ -1,6 +1,23 @@
 .search {
   font-family: "Anek Latin";
 
+  #choose-chain-label{
+    display: inline-block;
+    // font-size: 30px;
+    // line-height: 0.9;
+    // padding: 20px;
+    font-family: "Syncopate", sans-serif;
+    text-transform: uppercase;
+    background: radial-gradient(
+        circle farthest-corner at center center,
+        #f6f9f3,
+        #d1ddc3,
+        #f0ffc9
+      )
+      no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 
   .chain-select-container {
     padding: 25px 0;
@@ -56,12 +73,13 @@
   }
 
   .title {
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: rgba(99, 99, 99, 0.352) 0px 2px 8px 0px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
     align-items: center;
-    border-radius: 25px;
+    // border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.149);
 
     .logo {
       width: 20%;

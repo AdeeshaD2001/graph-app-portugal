@@ -12,6 +12,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0 !important;
 }
 
 code {
@@ -19,6 +20,10 @@ code {
     monospace;
 }
 
-*{
-  
+html, body{
+  height:100%;
+}
+
+#root, .App{
+  height:100%;
 }
