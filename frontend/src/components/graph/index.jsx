@@ -1,13 +1,15 @@
-import { Fragment } from "react";
+import { Fragment, Component } from "react";
 import {
   VictoryScatter,
   VictoryChart,
   VictoryTheme,
   VictoryTooltip,
-  VictoryLabel,
+  VictoryAxis,
+  VictoryLabel
 } from "victory";
 
 import "./graph.styles.scss";
+
 
 export default function AreaChart({
   max_x,
@@ -15,6 +17,7 @@ export default function AreaChart({
   consumoAverage,
   data,
   subscriptionType,
+  selectedChainName
 }) {
   if (data) {
     const dataChart = data;
@@ -22,14 +25,13 @@ export default function AreaChart({
     const dataMax_y = max_y;
     const dataConsumoAverage = consumoAverage;
     const dataSubscriptionType = subscriptionType;
-    console.log(dataChart);
-    console.log(dataMax_x);
-    console.log(dataMax_y);
+    const dataChainName = selectedChainName;
+    
     if (dataSubscriptionType != "basic_level") {
       return (
         <div className="graph-container">
           <div className="graph-name-container">
-            <span id="graph-name"></span>
+            <span id="graph-name">{dataChainName}</span>
           </div>
           <svg style={{ height: 0 }}>
             <defs>
@@ -75,8 +77,9 @@ export default function AreaChart({
                   // pointerWidth={150}
                   // cornerRadius={0}
                   flyoutStyle={{
-                    stroke: "white",
+                    stroke: "#2f7fa6",
                     fill: "url(#tooltip-gradient)",
+                    strokeWidth: 1.5
                   }}
                 />
               }
@@ -85,6 +88,7 @@ export default function AreaChart({
                   fill: ({ datum }) =>
                     datum.y > dataConsumoAverage
                       ? "url(#myGradient)"
+
                       : "url(#myGradient2)",
                 },
                 labels: {
@@ -94,7 +98,24 @@ export default function AreaChart({
                 },
               }}
               size={5}
+              symbol = "square"
               data={dataChart}
+            />
+            <VictoryAxis
+              label="Consumidores"
+              style={{
+                axisLabel: {fontSize: 12.5, padding: 30, fill: "#92b33e"},
+                tickLabels: {fontSize: 10, padding: 5, fill: "#92b33e"}
+              }}
+            />
+            <VictoryAxis dependentAxis
+              label="Consumo no Ambiete Livre Kwh/m^2"
+              style={{
+                axisLabel: {fontSize: 12.5, padding: 37, fill: "#92b33e" },
+                tickLabels: {fontSize: 10, padding: 5, fill: "#92b33e"}
+              }}
+              offsetX={50}
+              tickFormat={(x) => (`${x / 1000}k`)}
             />
           </VictoryChart>
         </div>
@@ -102,6 +123,9 @@ export default function AreaChart({
     } else {
       return (
         <div className="graph-container">
+          <div className="graph-name-container">
+              <span id="graph-name">{dataChainName}</span>
+          </div>
           <svg style={{ height: 0 }}>
             <defs>
               <linearGradient id="myGradient">
@@ -145,8 +169,9 @@ export default function AreaChart({
                   // pointerWidth={150}
                   // cornerRadius={0}
                   flyoutStyle={{
-                    stroke: "none",
+                    stroke: "#2f7fa6",
                     fill: "url(#tooltip-gradient)",
+                    strokeWidth: 1.5
                   }}
                 />
               }
@@ -166,7 +191,24 @@ export default function AreaChart({
                 },
               }}
               size={5}
+              symbol = "square"
               data={dataChart}
+            />
+            <VictoryAxis
+              label="Consumidores"
+              style={{
+                axisLabel: {fontSize: 12.5, padding: 30, fill: "#92b33e"},
+                tickLabels: {fontSize: 10, padding: 5, fill: "#92b33e"}
+              }}
+            />
+            <VictoryAxis dependentAxis
+              label="Consumo no Ambiete Livre Kwh/m^2"
+              style={{
+                axisLabel: {fontSize: 12.5, padding: 37, fill: "#92b33e" },
+                tickLabels: {fontSize: 10, padding: 5, fill: "#92b33e"}
+              }}
+              offsetX={50}
+              tickFormat={(x) => (`${x / 1000}k`)}
             />
           </VictoryChart>
         </div>
@@ -175,9 +217,6 @@ export default function AreaChart({
   } else {
     return (
       <Fragment>
-        <div className="graph-name-container">
-          <span id="graph-name"></span>
-        </div>
         <div className="no-lojas">
           <span>Não há lojas cadastradas.</span>
         </div>
