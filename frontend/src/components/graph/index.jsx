@@ -140,27 +140,35 @@ export default function AreaChart({
           <svg style={{ height: 0 }}>
             <defs>
               <linearGradient id="myGradient">
-                <stop offset="0%" stopColor="#ee0979" />
-                {/* <stop offset="25%" stopColor="orange"/>
-        <stop offset="50%" stopColor="gold"/>
-        <stop offset="75%" stopColor="yellow"/> */}
-                <stop offset="100%" stopColor="#ff6a00" />
+                <stop offset="0%" stopColor="#72a357" />
+                 <stop offset="40%" stopColor="#EB4747"/>
+       
+        <stop offset="60%" stopColor="#EB4747"/> 
+                <stop offset="100%" stopColor="#72a357" />
               </linearGradient>
             </defs>
             <defs>
               <linearGradient id="myGradient2">
-                <stop offset="0%" stopColor="#00c6ff" />
-                {/* <stop offset="25%" stopColor="orange"/>
-        <stop offset="50%" stopColor="gold"/>
-        <stop offset="75%" stopColor="yellow"/> */}
-                <stop offset="100%" stopColor="#0072ff" />
+                <stop offset="0%" stopColor="#72a357" />
+                 <stop offset="40%" stopColor="#0072ff"/>
+       
+        <stop offset="60%" stopColor="#0072ff"/> 
+                <stop offset="100%" stopColor="#72a357" />
               </linearGradient>
             </defs>
+         
             <defs>
               <linearGradient id="tooltip-gradient">
                 <stop offset="0%" stopColor="#749e56 " />
 
                 <stop offset="100%" stopColor="#92b33e" />
+              </linearGradient>
+            </defs>
+            <defs>
+              <linearGradient id="text-gradient">
+                <stop offset="0%" stopColor="#f6f9f3" /> 
+                <stop offset="50%" stopColor="#d1ddc3" /> 
+                <stop offset="100%" stopColor="#f0ffc9" />
               </linearGradient>
             </defs>
           </svg>
@@ -208,15 +216,17 @@ export default function AreaChart({
             <VictoryAxis
               label="Consumidores"
               style={{
-                axisLabel: {fontSize: 12.5, padding: 30, fill: "#92b33e"},
-                tickLabels: {fontSize: 10, padding: 5, fill: "#92b33e"}
+                axisLabel: {fontSize: 12.5, padding: 30, fill:"url(#text-gradient)"},
+                tickLabels: {fontSize: 10, padding: 5, fill: "url(#text-gradient)"},
+                axis: {stroke: "#ffffff"}
               }}
             />
             <VictoryAxis dependentAxis
               label="Consumo no Ambiete Livre Kwh/m^2"
               style={{
-                axisLabel: {fontSize: 12.5, padding: 37, fill: "#92b33e" },
-                tickLabels: {fontSize: 10, padding: 5, fill: "#92b33e"}
+                axisLabel: {fontSize: 12.5, padding: 37, fill: "url(#text-gradient)" },
+                tickLabels: {fontSize: 10, padding: 5, fill: "url(#text-gradient)"},
+                axis: {stroke: "#ffffff"}
               }}
               offsetX={50}
               tickFormat={(x) => (`${x / 1000}k`)}
