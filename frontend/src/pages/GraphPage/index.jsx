@@ -18,6 +18,7 @@ const GraphPage = () => {
   const [max_x, setMax_x] = useState(null);
   const [max_y, setMax_y] = useState(null);
   const [consumoAverage, setconsumoAverage] = useState(0);
+  const [isScatter, setScatterOrHisto] = useState(true);
   const handleLogout = () => {
     logout();
   };
@@ -72,14 +73,7 @@ const GraphPage = () => {
     console.log(plotData);
     // let nMax_y = plotData[0].y;
     let nMax_x = plotData[plotData.length - 1].x;
-    // let consumoTotal = 0;
-    /*
-    selectedChain.lojas.forEach((loja) => {
-      if (loja.consumo > nMax_y) {
-        nMax_y = loja.consumo;
-      }
-      consumoTotal = consumoTotal + loja.consumo;
-    });*/
+   
     let nConsumoAverage = consumoTotal / nMax_x;
     console.log(nMax_x);
     console.log(nMax_y);
@@ -170,13 +164,14 @@ const GraphPage = () => {
 
   return (
     <div id="main">
-      <Search handleLogout={handleLogout} handleSubmit={handleSubmit} />
+      <Search handleLogout={handleLogout}  handleSubmit={handleSubmit} />
       <AreaChart
         max_x={max_x}
         max_y={max_y}
         consumoAverage={consumoAverage}
         data={data}
         subscriptionType={subscriptionType}
+        isScatter={isScatter}
         selectedChainName = {selectedChainName}
       />
     </div>
