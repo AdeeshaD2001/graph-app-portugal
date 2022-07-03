@@ -27,6 +27,7 @@ const Search = ({ handleLogout, handleSubmit }) => {
             Submit
           </button>
         </div>
+        
       </div>
     </div>
   );
