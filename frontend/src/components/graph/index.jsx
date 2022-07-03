@@ -30,12 +30,14 @@ export default function AreaChart({
     const dataChainName = selectedChainName;
     const dataIsScatter = isScatter;
     
+
     if (dataIsScatter) {
       
       if (dataSubscriptionType != "basic_level") {
         return (
           <div className="graph-container">
             <div className="graph-name-container">
+
               <span id="graph-name">{dataChainName}</span>
             </div>
             <svg style={{ height: 0 }}>
