@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import "./search.styles.scss";
 import Logo from "./logo.svg";
 
-const Search = ({ handleLogout, handleSubmit }) => {
+const Search = (props) => {
+
+  const {switchGraphMode, isScatter, handleLogout, handleSubmit } = props;
+  
+  const switchModeUp = () => {
+    switchGraphMode();
+  }
+
   return (
     <div className="search">
       <div className="title">
@@ -25,6 +32,9 @@ const Search = ({ handleLogout, handleSubmit }) => {
         <div className="submit-container">
           <button type="button" onClick={handleSubmit}>
             Submit
+          </button>
+          <button type="button" onClick={switchModeUp}>
+            Switch
           </button>
         </div>
         

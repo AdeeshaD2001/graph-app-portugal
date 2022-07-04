@@ -8,7 +8,14 @@ import FingerprintJS from "@fingerprintjs/fingerprintjs";
 
 const GraphPage = () => {
   const fpPromise = FingerprintJS.load(); // initialize fingerprintjs service.
-  const { user, logout } = useContext(AuthContext);
+  const { currentUser, logout } = useContext(AuthContext);
+  const { setUser} = useContext(AuthContext);
+  console.log(currentUser);
+  if (!currentUser) {
+    let storedUser = JSON.parse(localStorage.getItem('user')); 
+    setUser(storedUser);
+  }
+
   let graphs = [];
   let selectedChain = "";
   let selectedGraph = null;
@@ -128,9 +135,9 @@ const GraphPage = () => {
 
   const dataChart = async (query = "") => {
     try {
-      let current_user = JSON.parse(localStorage.getItem("user")); // gets the current user from localStorage.
-      console.log(current_user);
-      const response = await getData(current_user.id); // gets the data for the curent user from the server.
+      // let current_user = JSON.parse(localStorage.getItem("user")); // gets the current user from localStorage.
+      // console.log(current_user);
+      const response = await getData(currentUser.id); // gets the data for the curent user from the server.
       console.log(response);
       localStorage.setItem(
         "graphs",
@@ -145,7 +152,7 @@ const GraphPage = () => {
         // for a user with basic level subscription provide a visitorId.
         const fp = await fpPromise;
         const result = await fp.get();
-        updateVisitorId(current_user.id, result.visitorId); // make the server request to update the user's visitorId.
+        updateVisitorId(currentUser.id, result.visitorId); // make the server request to update the user's visitorId.
         return result.visitorId;
       }
       console.log(graphs);
@@ -162,9 +169,13 @@ const GraphPage = () => {
     });
   }, []);
 
+  const switchGraphMode = () => {
+    setScatterOrHisto(!isScatter) 
+  }
+
   return (
     <div id="main">
-      <Search handleLogout={handleLogout}  handleSubmit={handleSubmit} />
+      <Search handleLogout={handleLogout} switchGraphMode={switchGraphMode} isScatter={isScatter} handleSubmit={handleSubmit} />
       <AreaChart
         max_x={max_x}
         max_y={max_y}

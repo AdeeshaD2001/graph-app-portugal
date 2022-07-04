@@ -242,7 +242,7 @@ export default function AreaChart({
         );
       }
     }else{
-      
+      console.log('histogram');
     }
     
   } else {

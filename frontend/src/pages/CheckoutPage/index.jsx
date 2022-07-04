@@ -1,10 +1,18 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
+import { useEffect,useContext } from "react";
+import { AuthContext } from "../../contexts/auth";
 import { getAllGraphs, updateSubscription } from "../../services/api";
 
 const CheckoutPage = () => {
   const chainNames = []; // array to hold the chain names chosen by the user 
   let level = ""; // variable to hold the access level.
+
+  const {currentUser, setUser} = useContext(AuthContext);
+  console.log(currentUser);
+  if (!currentUser) {
+    let storedUser = JSON.parse(localStorage.getItem('user')); 
+    setUser(storedUser);
+  }
 
   const getChains = async () => {
     let res = await getAllGraphs(); // get all the chain data from the backend. data
@@ -21,10 +29,11 @@ const CheckoutPage = () => {
   };
 
   useEffect(() => {
-    const userJSON = localStorage.getItem("user"); // get the data of the current user stored in the localStorage.
-    const user = JSON.parse(userJSON);// parse the JSON to create the user object
+    // const userJSON = localStorage.getItem("user"); // get the data of the current user stored in the localStorage.
+    // const user = JSON.parse(userJSON);// parse the JSON to create the user object
     const allChains = []; // array to hold all the chain objects available.
-    console.log(user); 
+    // console.log(user); 
+    
 
     getChains().then((chains) => { // use the async function to get all the chain data from the backend.
       chains.forEach((chain) => {
@@ -35,6 +44,8 @@ const CheckoutPage = () => {
       generateChainSelect();
     });
   }, []);
+
+  
 
   const handleSubTypeSelect = () => {
     level = document.querySelector("#sub-type-select").value; // get the access level chosen by the user.
@@ -80,8 +91,8 @@ const CheckoutPage = () => {
   };
 
   const handleSubmit = () => {
-    const userJSON = localStorage.getItem("user");// when a user submits the data get the user JSON from localStorage.
-    const user = JSON.parse(userJSON); // get the user object.
+    // const userJSON = localStorage.getItem("user");// when a user submits the data get the user JSON from localStorage.
+    // const user = JSON.parse(userJSON); // get the user object.
     let allChains = JSON.parse(localStorage.getItem("allChains")); // get the list of all chains in the localStorage.
     let chosenChains = [];
     allChains.forEach(obj => {
@@ -92,11 +103,11 @@ const CheckoutPage = () => {
       })
       
     });
-    console.log(user.id);
+    console.log(currentUser.id);
     console.log(level);
     console.log(chosenChains);
     // calls the axios method to update the user document with the subscription data.
-    updateSubscription(user.id, level, chosenChains)
+    updateSubscription(currentUser.id, level, chosenChains)
     .then(response => { console.log('subscribedUser', response); alert('You have been subscribed!\n'+JSON.stringify(response)); })
     .catch(error =>  { console.log('subscribedUser', error.message); alert('Subscription failed\nError: '+error.message); });
 };
