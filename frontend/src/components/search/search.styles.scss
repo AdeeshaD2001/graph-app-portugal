@@ -106,15 +106,35 @@
   .title {
     box-shadow: rgba(99, 99, 99, 0.352) 0px 2px 8px 0px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
     justify-content: center;
     align-items: center;
     // border-radius: 25px;
-    background-color: rgba(255, 255, 255, 0.149);
+    background-color: rgb(255, 255, 255);
 
     .logo {
       width: 20%;
       padding: 0.5rem 3rem;
+    }
+    .center-div{
+      text-align: center;
+    }
+    .center-text{
+      display: inline-block;
+      // font-size: 30px;
+      // line-height: 0.9;
+      // padding: 20px;
+      font-family: "Syncopate", sans-serif;
+      text-transform: uppercase;
+      background: radial-gradient(
+          circle farthest-corner at center center,
+          #2f7fa6,
+          #92b33e,
+          #5c9c7c
+        )
+        no-repeat;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .button-tab {

@@ -22,6 +22,7 @@ const GraphPage = () => {
   const [consumoAverage, setconsumoAverage] = useState(0);
   const [isScatter, setScatterOrHisto] = useState(true);
   const [graphs, setGraphs] = useState([]);
+  const [expand, setExpand] = useState(true);
 
   const handleLogout = () => {
     localStorage.removeItem("graphs");
@@ -134,6 +135,9 @@ const GraphPage = () => {
   };
 
   const handleSubmit = () => {
+    if (expand) {
+      setExpand(!expand);
+    }
     if (subscriptionType === "basic_level") {
       // for a user with basic level subscription provide a visitorId.
       fpPromise
@@ -216,7 +220,7 @@ const GraphPage = () => {
   };
 
   return (
-    <div id="main">
+    <div id="main" className={expand?'expand':''}>
       <Search
         handleLogout={handleLogout}
         switchGraphMode={switchGraphMode}

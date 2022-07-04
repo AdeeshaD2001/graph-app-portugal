@@ -19,7 +19,9 @@ const Search = (props) => {
         <div>
           <img className="logo" src={Logo} alt="Logo Deep Ambiente" />
         </div>
-        <div></div>
+        <div className="center-div">
+          <p className="center-text">Benchmarking de Intensidade de Uso de Energia Elétrica</p>
+        </div>
         <div className="button-tab">
           <button onClick={handleLogout}>Sair</button>
         </div>
