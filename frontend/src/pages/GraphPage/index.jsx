@@ -25,7 +25,7 @@ const GraphPage = () => {
   const [max_x, setMax_x] = useState(null);
   const [max_y, setMax_y] = useState(null);
   const [consumoAverage, setconsumoAverage] = useState(0);
-  const [isScatter, setScatterOrHisto] = useState(true);
+  const [isScatter, setScatterOrHisto] = useState(false);
   const handleLogout = () => {
     logout();
   };
