@@ -23,7 +23,7 @@ export default function AreaChart({
   selectedChainName,
   isScatter,
 }) {
-  if (data) {
+  if (data  && subscriptionType != null) {
     const dataChart = data;
     const dataMax_x = max_x;
     const dataMax_y = max_y;
@@ -242,9 +242,7 @@ export default function AreaChart({
         );
       }
     }else{
-<<<<<<< HEAD
       console.log('histogram');
-=======
       if (dataSubscriptionType != "basic_level") {
         return (
           <div className="graph-container">
@@ -447,7 +445,6 @@ export default function AreaChart({
           </div>
         );
       }
->>>>>>> 206570e347c1209ea8fcd8fe8268d08fa0239605
     }
   } else {
     return (

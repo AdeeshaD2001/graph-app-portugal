@@ -73,8 +73,8 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     console.log(currentUser);
+      localStorage.setItem('user', JSON.stringify(currentUser));  
     if (currentUser) {
-    //   localStorage.setItem('user', JSON.stringify(currentUser));  
       if (!currentUser.isSubscribed) {
         navigate("/checkout");
       } else {

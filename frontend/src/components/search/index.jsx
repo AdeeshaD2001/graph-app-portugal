@@ -6,9 +6,12 @@ const Search = (props) => {
 
   const {switchGraphMode, isScatter, handleLogout, handleSubmit } = props;
   
+
   const switchModeUp = () => {
     switchGraphMode();
   }
+
+
 
   return (
     <div className="search">
@@ -30,12 +33,12 @@ const Search = (props) => {
         </div>
         
         <div className="submit-container">
-          <button type="button" onClick={handleSubmit}>
+          <button type="button" className="submit-btn" onClick={handleSubmit}>
             Submit
           </button>
-          <button type="button" onClick={switchModeUp}>
-            Switch
-          </button>
+          <button type="button" className="switch-btn"onClick={switchModeUp}>
+            Switch Graph Mode
+          </button> 
         </div>
         
       </div>

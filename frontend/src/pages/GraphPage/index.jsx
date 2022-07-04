@@ -9,29 +9,27 @@ import FingerprintJS from "@fingerprintjs/fingerprintjs";
 const GraphPage = () => {
   const fpPromise = FingerprintJS.load(); // initialize fingerprintjs service.
   const { currentUser, logout } = useContext(AuthContext);
-  const { setUser} = useContext(AuthContext);
+  const { setUser } = useContext(AuthContext);
   console.log(currentUser);
-  if (!currentUser) {
-    let storedUser = JSON.parse(localStorage.getItem('user')); 
-    setUser(storedUser);
-  }
 
-  let graphs = [];
   let selectedChain = "";
   let selectedGraph = null;
-  const [selectedChainName, setSelectedChainName] = useState(null)
+  const [selectedChainName, setSelectedChainName] = useState(null);
   const [subscriptionType, setSubscriptionType] = useState(null);
   const [data, setData] = useState(null);
   const [max_x, setMax_x] = useState(null);
   const [max_y, setMax_y] = useState(null);
   const [consumoAverage, setconsumoAverage] = useState(0);
-  const [isScatter, setScatterOrHisto] = useState(false);
+  const [isScatter, setScatterOrHisto] = useState(true);
+  const [graphs, setGraphs] = useState([]);
+
   const handleLogout = () => {
+    localStorage.removeItem("graphs");
     logout();
   };
 
   const generateChainSelect = async function () {
-    graphs = JSON.parse(localStorage.getItem("graphs"));
+    // graphs = JSON.parse(localStorage.getItem("graphs"));
     console.log(graphs);
     let options = ``;
     graphs.forEach((chain) => {
@@ -39,6 +37,35 @@ const GraphPage = () => {
     });
     document.querySelector("#chain-list").innerHTML = options;
   };
+
+  useEffect(() => {
+    if (graphs) {
+      console.log(graphs);
+      generateChainSelect();
+    }
+  }, [graphs]);
+
+  useEffect(() => {
+    if (currentUser) {
+      
+      getData(currentUser.id).then((response) => {
+        console.log(response);
+        if (response.data.chosenChains) {
+          // localStorage.setItem(
+          //   "graphs",
+          //   JSON.stringify(response.data.chosenChains)
+          // );
+          setGraphs(response.data.chosenChains);
+        }
+        if (response.data.subscriptionType) {
+          const settingcSubscriptionType = () => {
+            setSubscriptionType(response.data.subscriptionType);
+          };
+          settingcSubscriptionType();
+        }
+      });
+    }
+  }, [currentUser]);
 
   const generateChart = () => {
     console.log(selectedChain);
@@ -80,7 +107,7 @@ const GraphPage = () => {
     console.log(plotData);
     // let nMax_y = plotData[0].y;
     let nMax_x = plotData[plotData.length - 1].x;
-   
+
     let nConsumoAverage = consumoTotal / nMax_x;
     console.log(nMax_x);
     console.log(nMax_y);
@@ -104,18 +131,28 @@ const GraphPage = () => {
     settingMax_x();
     settingMax_y();
     settingcConsumoAverage();
-    
   };
 
-  
-
   const handleSubmit = () => {
+    if (subscriptionType === "basic_level") {
+      // for a user with basic level subscription provide a visitorId.
+      fpPromise
+        .then((fp) => {
+          return fp.get();
+        })
+        .then((result) => {
+          updateVisitorId(currentUser.id, result.visitorId); // make the server request to update the user's visitorId.
+        });
+      // const fp = await fpPromise;
+      // const result = await fp.get();
+      // return result.visitorId;
+    }
+
     selectedChain = document.querySelector("#chain-select-input").value;
     if (!selectedChain) return;
     // document.querySelector('#graph-name').innerText = `${document.querySelector("#chain-select-input").value}`;
 
     console.log(selectedChain);
-    graphs = JSON.parse(localStorage.getItem("graphs"));
     graphs.forEach((chain) => {
       if (selectedChain === chain.cadeia_nome) {
         selectedChain = chain;
@@ -129,33 +166,39 @@ const GraphPage = () => {
     document.querySelector("#chain-select-input").value = "";
   };
 
-  //const userId = '624a2f39509a9db8529cd24a';
-
-  //const [graphs, setGraphs] = useState([]);
-
   const dataChart = async (query = "") => {
     try {
       // let current_user = JSON.parse(localStorage.getItem("user")); // gets the current user from localStorage.
       // console.log(current_user);
-      const response = await getData(currentUser.id); // gets the data for the curent user from the server.
-      console.log(response);
-      localStorage.setItem(
-        "graphs",
-        JSON.stringify(response.data.chosenChains)
-      );
-      const settingcSubscriptionType = () => {
-        setSubscriptionType(response.data.subscriptionType);
-      };
-      settingcSubscriptionType();
-      //setGraphs(response.data.chosenChains);// update the graph variable with chain data from the server.
-      if (response.data.subscriptionType === "basic_level") {
-        // for a user with basic level subscription provide a visitorId.
-        const fp = await fpPromise;
-        const result = await fp.get();
-        updateVisitorId(currentUser.id, result.visitorId); // make the server request to update the user's visitorId.
-        return result.visitorId;
+      if (!currentUser) {
+        let storedUser = JSON.parse(localStorage.getItem("user"));
+        setUser(storedUser);
       }
-      console.log(graphs);
+      // const response = await getData(currentUser.id); // gets the data for the curent user from the server.
+      // console.log(response);
+      // if (response.data.chosenChains) {
+
+      //   // localStorage.setItem(
+      //   //   "graphs",
+      //   //   JSON.stringify(response.data.chosenChains)
+      //   // );
+      //   setGraphs(response.data.chosenChains);
+      // }
+      // if (response.data.subscriptionType) {
+
+      //   const settingcSubscriptionType = () => {
+      //     setSubscriptionType(response.data.subscriptionType);
+      //   };
+      //   settingcSubscriptionType();
+      // }
+      //setGraphs(response.data.chosenChains);// update the graph variable with chain data from the server.
+      // if (response.data.subscriptionType === "basic_level") {
+      //   // for a user with basic level subscription provide a visitorId.
+      //   const fp = await fpPromise;
+      //   const result = await fp.get();
+      //   updateVisitorId(currentUser.id, result.visitorId); // make the server request to update the user's visitorId.
+      //   return result.visitorId;
+      // }
     } catch (err) {
       console.log(err);
     }
@@ -165,17 +208,21 @@ const GraphPage = () => {
     // (async () => await dataChart())();
     dataChart().then(() => {
       console.log("Graphs Has been fetched");
-      generateChainSelect();
     });
   }, []);
 
   const switchGraphMode = () => {
-    setScatterOrHisto(!isScatter) 
-  }
+    setScatterOrHisto(!isScatter);
+  };
 
   return (
     <div id="main">
-      <Search handleLogout={handleLogout} switchGraphMode={switchGraphMode} isScatter={isScatter} handleSubmit={handleSubmit} />
+      <Search
+        handleLogout={handleLogout}
+        switchGraphMode={switchGraphMode}
+        isScatter={isScatter}
+        handleSubmit={handleSubmit}
+      />
       <AreaChart
         max_x={max_x}
         max_y={max_y}
@@ -183,7 +230,7 @@ const GraphPage = () => {
         data={data}
         subscriptionType={subscriptionType}
         isScatter={isScatter}
-        selectedChainName = {selectedChainName}
+        selectedChainName={selectedChainName}
       />
     </div>
   );
