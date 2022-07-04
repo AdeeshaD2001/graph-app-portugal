@@ -74,18 +74,25 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     console.log(currentUser);
       localStorage.setItem('user', JSON.stringify(currentUser));  
-    if (currentUser) {
-      if (!currentUser.isSubscribed) {
-        navigate("/checkout");
-      } else {
-        navigate("/graph");
-      }
-    }
+    // if (currentUser) {
+    //   if (!currentUser.isSubscribed) {
+    //     navigate("/checkout");
+    //   } else {
+    //     navigate("/graph");
+    //   }
+    // }
   }, [currentUser]);
 
   const login = async (email, password) => {
     const response = await createSession(email, password);
     setUser(response.data.user);
+    if (response.data.user) {
+      if (!response.data.user.isSubscribed) {
+        navigate("/checkout");
+      } else {
+        navigate("/graph");
+      }
+    }
     
   };
 
