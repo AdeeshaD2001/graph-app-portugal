@@ -6,7 +6,7 @@ const Search = (props) => {
 
   const {switchGraphMode, isScatter, handleLogout, handleSubmit } = props;
   
-
+  // Function to handle the Grpah Mode Button CLick. Calls the SwitchGraphMode function in the Parent component
   const switchModeUp = () => {
     switchGraphMode();
   }

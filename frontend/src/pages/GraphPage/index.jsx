@@ -30,7 +30,7 @@ const GraphPage = () => {
   };
 
   const generateChainSelect = async function () {
-    // graphs = JSON.parse(localStorage.getItem("graphs"));
+    // generates chain name dropdown using the cadeia_nome fetched from the server.
     console.log(graphs);
     let options = ``;
     graphs.forEach((chain) => {
@@ -40,22 +40,22 @@ const GraphPage = () => {
   };
 
   useEffect(() => {
+    // genertates the chain name dropdown when server actually loads the chain names.
     if (graphs) {
       console.log(graphs);
       generateChainSelect();
     }
   }, [graphs]);
 
+  // When current user is set initiate the process to fetch chains from the server.
   useEffect(() => {
+  
     if (currentUser) {
       
       getData(currentUser.id).then((response) => {
         console.log(response);
         if (response.data.chosenChains) {
-          // localStorage.setItem(
-          //   "graphs",
-          //   JSON.stringify(response.data.chosenChains)
-          // );
+          
           setGraphs(response.data.chosenChains);
         }
         if (response.data.subscriptionType) {
@@ -67,6 +67,7 @@ const GraphPage = () => {
       });
     }
   }, [currentUser]);
+
 
   const generateChart = () => {
     console.log(selectedChain);
@@ -135,6 +136,7 @@ const GraphPage = () => {
   };
 
   const handleSubmit = () => {
+    // dashboard is expanded when no chain in selected. remove expansion when a chain is selected. 
     if (expand) {
       setExpand(!expand);
     }
@@ -147,15 +149,13 @@ const GraphPage = () => {
         .then((result) => {
           updateVisitorId(currentUser.id, result.visitorId); // make the server request to update the user's visitorId.
         });
-      // const fp = await fpPromise;
-      // const result = await fp.get();
-      // return result.visitorId;
+      
     }
 
+    // gets user input value from select element
     selectedChain = document.querySelector("#chain-select-input").value;
     if (!selectedChain) return;
-    // document.querySelector('#graph-name').innerText = `${document.querySelector("#chain-select-input").value}`;
-
+    
     console.log(selectedChain);
     graphs.forEach((chain) => {
       if (selectedChain === chain.cadeia_nome) {
@@ -170,52 +170,28 @@ const GraphPage = () => {
     document.querySelector("#chain-select-input").value = "";
   };
 
+  // function that runs on component mount to initiate setting user data 
   const dataChart = async (query = "") => {
     try {
-      // let current_user = JSON.parse(localStorage.getItem("user")); // gets the current user from localStorage.
-      // console.log(current_user);
+      
       if (!currentUser) {
         let storedUser = JSON.parse(localStorage.getItem("user"));
         setUser(storedUser);
       }
-      // const response = await getData(currentUser.id); // gets the data for the curent user from the server.
-      // console.log(response);
-      // if (response.data.chosenChains) {
-
-      //   // localStorage.setItem(
-      //   //   "graphs",
-      //   //   JSON.stringify(response.data.chosenChains)
-      //   // );
-      //   setGraphs(response.data.chosenChains);
-      // }
-      // if (response.data.subscriptionType) {
-
-      //   const settingcSubscriptionType = () => {
-      //     setSubscriptionType(response.data.subscriptionType);
-      //   };
-      //   settingcSubscriptionType();
-      // }
-      //setGraphs(response.data.chosenChains);// update the graph variable with chain data from the server.
-      // if (response.data.subscriptionType === "basic_level") {
-      //   // for a user with basic level subscription provide a visitorId.
-      //   const fp = await fpPromise;
-      //   const result = await fp.get();
-      //   updateVisitorId(currentUser.id, result.visitorId); // make the server request to update the user's visitorId.
-      //   return result.visitorId;
-      // }
+      
     } catch (err) {
       console.log(err);
     }
   };
 
   useEffect(() => {
-    // (async () => await dataChart())();
+    // run a function to set user data on component mount.
     dataChart().then(() => {
       console.log("Graphs Has been fetched");
     });
   }, []);
 
-  const switchGraphMode = () => {
+  const switchGraphMode = () => { //Function that toggles the graph mode between Scatter and Bar chart.
     setScatterOrHisto(!isScatter);
   };
 
